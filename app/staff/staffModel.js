@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 const staffSchema = new Schema(
     {
         name: {
+            type: String,
             required: true,
             first: { type: String, trim: true, lowercase: true },
             last: { type: String, trim: true, lowercase: true }
@@ -17,7 +18,7 @@ const staffSchema = new Schema(
         pin: {
             type: Number,
             required: true,
-            min: 0000,
+            min: 0,
             max: 9999
         },
         salt: {
@@ -35,6 +36,6 @@ const staffSchema = new Schema(
 );
 
 // Create Pin model
-const Staff = mongoose.model('Checkout', staffSchema);
+const Staff = mongoose.model('Staff', staffSchema);
 
 module.exports = Staff;

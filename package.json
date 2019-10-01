@@ -4,11 +4,13 @@
     "main": "server.js",
     "private": true,
     "dependencies": {
+        "concurrently": "^4.1.2",
         "dotenv": "^8.1.0",
         "express": "^4.17.1",
         "hashpass": "0.0.0",
         "if-env": "^1.0.4",
         "mongoose": "^5.7.0",
+        "nodemon": "^1.19.3",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "react-scripts": "3.1.1",

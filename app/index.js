@@ -5,9 +5,11 @@ const path = require('path');
 const router = require('express').Router(); // Create a Router instance
 
 // Require all API routes
-const checkout = require('./checkouts');
+const checkout = require('./checkout');
 const staff = require('./staff');
-const contest = require('./contested')
+const contest = require('./contested');
+const pins = require('./pins');
+
 
 // Require authentication routes
 const auth = require('./auth');
@@ -17,6 +19,7 @@ const auth = require('./auth');
 router.use('/api/checkout', checkout.controller);
 router.use('/api/staff', staff.controller);
 router.use('/api/contest', contest.controller);
+router.use('/api/pin', pins.controller);
 
 // Authentication routes
 router.use('/auth/login', auth.login);

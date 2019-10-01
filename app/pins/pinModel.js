@@ -10,32 +10,36 @@ const Schema = mongoose.Schema;
 const pinSchema = new Schema(
     {
         pin: {
-            type: Number,
-            required: true,
-            min: 0000,
-            max: 9999
+            type: String,
+            required: true
         },
         salt: {
             required: true,
             type: String
         },
         role: {
-            enum: ['admin', 'slb', 'slt'],
+            enum: [
+                'admin',
+                '1slba',
+                '1slta',
+                '1slbp',
+                '1sltp',
+                '2slba',
+                '2slta',
+                '2slbp',
+                '2sltp',
+                '3slba',
+                '3slta',
+                '3slbp',
+                '3sltp',
+            ],
             lowercase: true,
             required: true,
             trim: true,
             type: String
         },
-        floor: {
-            enum: [1, 2, 3],
-            lowercase: true,
-            trim: true,
-            type: Number
-        },
-        shift: {
-            enum: ['am', 'pm'],
-            lowercase: true,
-            trim: true,
+        session: {
+            default: null,
             type: String
         }
 
@@ -43,6 +47,6 @@ const pinSchema = new Schema(
 );
 
 // Create Pin model
-const Pin = mongoose.model('Checkout', pinSchema);
+const Pin = mongoose.model('Pin', pinSchema);
 
 module.exports = Pin;

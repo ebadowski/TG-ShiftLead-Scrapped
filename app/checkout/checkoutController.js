@@ -39,7 +39,7 @@ router
             });
     })
     // POST route for creating a checkout
-    .post(auth.authenticate, users.exists, function (req, res) {
+    .post(auth.authenticate, staff.exists, function (req, res) {
         Checkout.create(req.body)
             .then(function (checkout) {
                 Checkout.findById(checkout._id)

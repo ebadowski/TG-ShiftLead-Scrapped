@@ -4,7 +4,7 @@
 const router = require('express').Router(); // Create a Router instance
 
 // Require Contest model
-const Contest = require('./contestModel');
+const Contest = require('./contestedModel');
 
 // Require users helper modules
 const staff = {
@@ -39,7 +39,7 @@ router
             });
     })
     // POST route for creating a checkout
-    .post(auth.authenticate, users.exists, function (req, res) {
+    .post(auth.authenticate, staff.exists, function (req, res) {
         Contest.create(req.body)
             // .then(function (contest) {
             //     Contest.findById(contest._id)
