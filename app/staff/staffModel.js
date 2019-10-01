@@ -16,10 +16,8 @@ const staffSchema = new Schema(
             last: { type: String, trim: true, lowercase: true }
         },
         pin: {
-            type: Number,
-            required: true,
-            min: 0,
-            max: 9999
+            type: String,
+            required: true
         },
         salt: {
             required: true,

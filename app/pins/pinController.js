@@ -19,7 +19,8 @@ const utils = require('../utils');
 router
     .route('/')
     // GET route for listing all users sorted by id, with the most recent users appearing first
-    .get(auth.authenticate, function (req, res) {
+    // .get(auth.authenticate, function (req, res) {
+    .get(function (req, res) {
         console.log(req.params)
         const query = utils.format.query(req.query);
 

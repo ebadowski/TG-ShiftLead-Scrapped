@@ -19,7 +19,8 @@ const utils = require('../utils');
 router
     .route('/')
     // GET route for listing all staff sorted by name
-    .get(auth.authenticate, function (req, res) {
+    // .get(auth.authenticate, function (req, res) {
+    .get(function (req, res) {
         console.log(req.params)
         const query = utils.format.query(req.query);
 
@@ -40,11 +41,12 @@ router
             });
     })
     // POST route for creating a user
-    .post(auth.authenticate, function (req, res) {
+    //.post(auth.authenticate, function (req, res) {
+    .post(function (req, res) {
         const pin = hashPass(req.body.pin);
         const request = {
             name: req.body.name,
-            password: pin.hash,
+            pin: pin.hash,
             salt: pin.salt
         };
 
@@ -55,13 +57,13 @@ router
 
         Staff.create(request)
             .then(function (user) {
-                const response = utils.format.usersResponse(user);
+                // const response = utils.format.usersResponse(user);
 
                 // if (user.token) {
                 //     response.token = user.token;
                 // }
 
-                res.status(200).json(response);
+                res.status(200).json(user);
             })
             .catch(function (err) {
                 res.status(500).json(err);
