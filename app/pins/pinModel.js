@@ -43,7 +43,8 @@ const pinSchema = new Schema(
             type: String
         }
 
-    }
+    },
+    { timestamps: true }
 );
 
 // Create Pin model
