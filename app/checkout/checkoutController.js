@@ -39,7 +39,8 @@ router
             });
     })
     // POST route for creating a checkout
-    .post(auth.authenticate, staff.exists, function (req, res) {
+    // .post(auth.authenticate, staff.exists, function (req, res) {
+    .post(function (req, res) {
         Checkout.create(req.body)
             .then(function (checkout) {
                 Checkout.findById(checkout._id)
@@ -67,7 +68,8 @@ router
 router
     .route('/:_id')
     // GET route for retrieving a checkout by id
-    .get(auth.authenticate, function (req, res) {
+    //.get(auth.authenticate, function (req, res) {
+    .get(function (req, res) {
         Checkout.findById(req.params._id)
             //.populate({ path: 'staff', options: { sort: { _id: -1 } } })
             .then(function (checkout) {
@@ -78,7 +80,8 @@ router
             });
     })
     // PATCH route for updating a checkout by id
-    .patch(auth.authenticate, function (req, res) {
+    // .patch(auth.authenticate, function (req, res) {
+    .patch(function (req, res) {
         Checkout.findOneAndUpdate({ _id: req.params._id }, req.body, {
             new: true
         })
