@@ -7,6 +7,10 @@
     text-transform: capitalize;
 }
 
-.nav .brand-logo{
+.nav .brand-logo {
     position: static !important;
+}
+
+nav {
+    background-color: dodgerblue
 }

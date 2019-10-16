@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Header } from './components/common';
 import {
     Floorplan
@@ -8,6 +7,7 @@ import {
 function App() {
     return <div>
         <Header />
+        <Floorplan />
     </div>
         ;
 }
