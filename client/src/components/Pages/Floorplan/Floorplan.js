@@ -76,7 +76,12 @@ class Floorplan extends Component {
 
                                         <div className="row left">{staff.bays.start}-{staff.bays.end} </div>
                                         <div className="row ">{staff.name}</div>
-                                        <div className="row right">{staff.slCheckout.sidework ? "check" : "X"}</div>
+                                        <div className="row right">
+                                            <i className="material-icons"> <span className={staff.slCheckout.BVsidework ? "green-text" : "red-text"}>local_drink</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.TLsidework ? "green-text" : "red-text"}>golf_course</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.rolls ? "green-text" : "red-text"}>local_dining</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.folds ? "green-text" : "red-text"}>filter_hdr</span></i>
+                                        </div>
 
                                     </div>
                                     <CollapseBody
