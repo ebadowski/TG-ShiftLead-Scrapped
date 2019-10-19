@@ -17,7 +17,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -46,7 +47,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -75,7 +77,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -104,7 +107,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -133,7 +137,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -162,7 +167,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -191,7 +197,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },
@@ -220,7 +227,8 @@
             "folds": 15
         },
         "slCheckout": {
-            "sidework": false,
+            "BVsidework": false,
+            "TLsidework": false,
             "rolls": false,
             "folds": false
         },

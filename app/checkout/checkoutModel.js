@@ -61,7 +61,11 @@ const checkoutSchema = new Schema(
             }
         },
         slCheckout: {
-            sidework: {
+            BVsidework: {
+                default: false,
+                type: Boolean
+            },
+            TLsidework: {
                 default: false,
                 type: Boolean
             },
