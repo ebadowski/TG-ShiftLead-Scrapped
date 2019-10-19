@@ -43,23 +43,47 @@ const checkoutSchema = new Schema(
             end: Number
         },
         tasks: {
-            bev: String,
-            teeline: String,
-            rolls: Number,
-            folds: Number
+            bev: {
+                default: null,
+                type: String
+            },
+            teeline: {
+                default: null,
+                type: String
+            },
+            rolls: {
+                default: null,
+                type: Number
+            },
+            folds: {
+                default: null,
+                type: Number
+            }
         },
         slCheckout: {
-            sidework: Boolean,
-            rolls: Boolean,
-            folds: Boolean
+            sidework: {
+                default: false,
+                type: Boolean
+            },
+            rolls: {
+                default: false,
+                type: Boolean
+            },
+            folds: {
+                default: false,
+                type: Boolean
+            }
         },
         adminCheckout: {
+            default: false,
             type: Boolean
         },
         modCheckout: {
+            default: false,
             type: Boolean
         },
         comments: {
+            default: null,
             type: String
         }
     },

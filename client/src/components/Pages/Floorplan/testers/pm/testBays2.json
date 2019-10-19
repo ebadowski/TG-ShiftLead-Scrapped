@@ -1,0 +1,234 @@
+[
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Gary Lowsides",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 201,
+            "end": 204
+        },
+        "tasks": {
+            "bev": "Stock",
+            "teeline": "POS Terminal",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Randy Lowcart",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 205,
+            "end": 208
+        },
+        "tasks": {
+            "bev": "Counters",
+            "teeline": "Wash Recycle Bin",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Justin Midlow",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 209,
+            "end": 212
+        },
+        "tasks": {
+            "bev": "Sweep",
+            "teeline": "Stock Cart",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Bell Lowlead",
+        "shiftLead": true,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 213,
+            "end": 217
+        },
+        "tasks": {
+            "bev": "Open SL",
+            "teeline": "Open SL",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Ellie Highlead",
+        "shiftLead": true,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 218,
+            "end": 222
+        },
+        "tasks": {
+            "bev": "Open SL",
+            "teeline": "Open SL",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Cady Midhigh",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 223,
+            "end": 226
+        },
+        "tasks": {
+            "bev": "Counters",
+            "teeline": "Stock Cart",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Rob Highcart",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 227,
+            "end": 230
+        },
+        "tasks": {
+            "bev": "Coffee / Ice Tea",
+            "teeline": "Clean/Wash Recycle bin",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    },
+    {
+        "_id": "5d93ed0408d1a324e0419aaf",
+        "name": "Greg Highside",
+        "shiftLead": false,
+        "date": "2019-10-01T23:32:06.918Z",
+        "shift": "pm",
+        "floor": "2",
+        "bays": {
+            "start": 231,
+            "end": 234
+        },
+        "tasks": {
+            "bev": "Stock",
+            "teeline": "POS Terminal",
+            "rolls": 35,
+            "folds": 15
+        },
+        "slCheckout": {
+            "sidework": false,
+            "rolls": false,
+            "folds": false
+        },
+        "adminCheckout": false,
+        "modCheckout": false,
+        "comments": "",
+        "createdAt": "2019-10-02T00:19:16.493Z",
+        "updatedAt": "2019-10-02T00:25:22.881Z",
+        "__v": 0
+    }
+]
