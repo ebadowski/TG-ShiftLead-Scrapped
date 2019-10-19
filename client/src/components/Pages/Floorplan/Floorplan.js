@@ -62,7 +62,7 @@ class Floorplan extends Component {
         console.log(this.state.sortedStaff.am.first)
         return (
             <div>
-                <ul className="collapsible">
+                <ul className="collapsible popout">
                     {
                         // (this.state.sortedStaff.am.testBays2)
                         //     ?
@@ -72,8 +72,12 @@ class Floorplan extends Component {
                                     key={staff.name + '-li'}
 
                                 >
-                                    <div className="collapsible-header">
-                                        {staff.name}
+                                    <div className="collapsible-header valign-wrapper">
+
+                                        <div className="row left">{staff.bays.start}-{staff.bays.end} </div>
+                                        <div className="row ">{staff.name}</div>
+                                        <div className="row right">{staff.slCheckout.sidework ? "check" : "X"}</div>
+
                                     </div>
                                     <CollapseBody
                                         sessionToken={this.props.sessionToken}
