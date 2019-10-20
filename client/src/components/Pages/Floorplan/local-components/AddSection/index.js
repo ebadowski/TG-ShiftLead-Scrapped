@@ -124,7 +124,7 @@ class AddSection extends Component {
                 }
             }
             API.createNewCheckout('PUT SESSION HERE', newCO)
-            //REFRESH COMPONENT ON SUCCESS 
+            //REFRESH PARENT ON SUCCESS 
         }
         else {
             M.toast({
