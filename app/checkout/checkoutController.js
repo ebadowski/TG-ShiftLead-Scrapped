@@ -25,7 +25,8 @@ const utils = require('../utils');
 router
     .route('/')
     // GET route for listing all checkouts sorted by id, with the most recent checkouts appearing first
-    .get(auth.authenticate, function (req, res) {
+    // .get(auth.authenticate, function (req, res) {
+    .get(function (req, res) {
         const query = utils.format.query(req.query);
 
         Checkout.find(query)

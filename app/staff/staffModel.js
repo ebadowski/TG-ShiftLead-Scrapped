@@ -10,8 +10,6 @@ const Schema = mongoose.Schema;
 const staffSchema = new Schema(
     {
         name: {
-            type: String,
-            required: true,
             first: { type: String, trim: true, lowercase: true },
             last: { type: String, trim: true, lowercase: true }
         },
@@ -28,7 +26,7 @@ const staffSchema = new Schema(
                 ref: 'Checkout',
                 type: Schema.Types.ObjectId
             }
-        ],
+        ]
 
     }
 );

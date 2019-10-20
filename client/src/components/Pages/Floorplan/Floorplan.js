@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import M from 'materialize-css';
 //import { Autocomplete } from "react-materialize";
 import CollapseBody from './local-components/CollapseBody';
+import AddSection from './local-components/AddSection';
 
 import axios from 'axios';
 
@@ -72,15 +73,15 @@ class Floorplan extends Component {
                                     key={staff.name + '-li'}
 
                                 >
-                                    <div className="collapsible-header valign-wrapper">
+                                    <div className="collapsible-header">
 
                                         <div className="row left">{staff.bays.start}-{staff.bays.end} </div>
                                         <div className="row ">{staff.name}</div>
                                         <div className="row right">
-                                            <i className="material-icons"> <span className={staff.slCheckout.BVsidework ? "green-text" : "red-text"}>local_drink</span></i>
-                                            <i className="material-icons"> <span className={staff.slCheckout.TLsidework ? "green-text" : "red-text"}>golf_course</span></i>
-                                            <i className="material-icons"> <span className={staff.slCheckout.rolls ? "green-text" : "red-text"}>local_dining</span></i>
-                                            <i className="material-icons"> <span className={staff.slCheckout.folds ? "green-text" : "red-text"}>filter_hdr</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.BVsidework ? "green-text text-darken-1" : "red-text text-darken-1"}>local_drink</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.TLsidework ? "green-text text-darken-1" : "red-text text-darken-1"}>golf_course</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.rolls ? "green-text text-darken-1" : "red-text text-darken-1"}>local_dining</span></i>
+                                            <i className="material-icons"> <span className={staff.slCheckout.folds ? "green-text text-darken-1" : "red-text text-darken-1"}>filter_hdr</span></i>
                                         </div>
 
                                     </div>
@@ -94,9 +95,13 @@ class Floorplan extends Component {
                                 </li>
                             )
                         )
+
+
                         // : null
 
                     }
+                    <AddSection />
+
                 </ul>
             </div>
         );
