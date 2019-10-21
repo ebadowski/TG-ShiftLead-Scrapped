@@ -4,7 +4,7 @@ import M from 'materialize-css';
 //import { Autocomplete } from "react-materialize";
 
 import FPHeader from './local-components/FPHeader';
-import Collapsible from './Collapsible';
+import Collapsible from './local-components/Collapsible';
 
 
 import axios from 'axios';

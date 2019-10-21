@@ -23,7 +23,7 @@ class FPHeader extends Component {
             <div className="row">
                 <div className='col s3 left'>
 
-                    {
+                    {/* {
                         this.state.shift
                             ? (<span>
                                 <a
@@ -42,7 +42,7 @@ class FPHeader extends Component {
                                 </a> AM
                             </span>)
 
-                    }
+                    } */}
 
                 </div>
             </div>
