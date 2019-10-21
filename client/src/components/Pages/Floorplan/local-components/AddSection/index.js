@@ -14,7 +14,8 @@ class AddSection extends Component {
         //console.log(props)
         super(props);
         this.state = {
-            staffList: {},
+            staffList: props.staffList,
+            staffAutoComplete: props.staffAutoComplete,
             shift: "am", // CHANGE TO PROPS FROM VIEW
             floor: "2", // CHANGE TO PROPS FROM VIEW
             rolls: null, // CHANGE TO PROPS FROM VIEW
@@ -26,63 +27,37 @@ class AddSection extends Component {
             tlVal: '',
             slVal: false
         };
+        //this.initAutoComplete()
     }
 
     componentDidMount() {
-        this.getStaffNames();
+       // this.getStaffNames();
 
 
         M.AutoInit();
 
-
+       // this.initAutoComplete()
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
         this.setState({
-
+            staffList: nextProps.staffList,
+            staffAutoComplete: nextProps.staffAutoComplete
         });
+       // this.initAutoComplete()
     }
 
-    getStaffNames() {
-        // API.getAllStaff(this.props.sessionToken)
-        API.getAllStaff("session token goes here")
-            .then(response => {
-                console.log(response);
-                this.sortStaffData(response.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
-    sortStaffData(data) {
-        let searchObj = {}
-
-        // Pull names only and create list obj for autocomplete to use
-
-        for (let i in data) {
-            data[i].searchName = data[i].name.first.charAt(0).toUpperCase() + data[i].name.first.slice(1) + " " + data[i].name.last.charAt(0).toUpperCase() + data[i].name.last.slice(1)
-            searchObj[data[i].searchName] = null  // can set to img link if we add profile images   'https://placehold.it/250x250'
-
-        }
-        console.log(data)
-        console.log(searchObj)
-        // set full data set to staffList
-        this.setState({ staffList: data })
-
+    initAutoComplete() {
         // init autocomplete 
         let options = {
-            data: searchObj,
+            data: this.state.staffAutoComplete,
             onAutocomplete: val => {
                 this.setState({ nameVal: val });
                 // this.getUsers(this.state.searchFilter, val);
             }
         }
 
-        this.initAutoComplete(options);
-    }
-
-    initAutoComplete(options) {
         let autocomplete = document.querySelectorAll('.staffNameInput');
 
         M.Autocomplete.init(autocomplete, options);
@@ -139,6 +114,7 @@ class AddSection extends Component {
 
 
     render() {
+        this.initAutoComplete()
         return (
             <li key="addSection">
                 <div className="collapsible-header">

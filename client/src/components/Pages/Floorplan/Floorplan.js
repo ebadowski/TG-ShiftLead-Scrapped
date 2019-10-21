@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import M from 'materialize-css';
 //import { Autocomplete } from "react-materialize";
+import axios from 'axios';
 
 import FPHeader from './local-components/FPHeader';
 import Collapsible from './local-components/Collapsible';
 
-
-import axios from 'axios';
+import API from '../../../utils/API';
 
 import testBays1am from './testers/am/testBays1'
 import testBays2am from './testers/am/testBays2'
@@ -32,6 +32,8 @@ class Floorplan extends Component {
 
         // Set some state
         this.state = {
+            staffList:{},
+            staffAutoComplete: {},
             sortedStaff: {
                 am: {
                     first: testBays1am,
@@ -66,11 +68,43 @@ class Floorplan extends Component {
 
         this.initTabs()
 
+        this.getStaffNames();
+
     }
     componentDidUpdate() {
         M.AutoInit();
         this.initTabs()
     }
+
+    getStaffNames() {
+        // API.getAllStaff(this.props.sessionToken)
+        API.getAllStaff("session token goes here")
+            .then(response => {
+                console.log(response);
+                this.sortStaffData(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    sortStaffData(data) {
+        let searchObj = {}
+
+        // Pull names only and create list obj for autocomplete to use
+
+        for (let i in data) {
+            data[i].searchName = data[i].name.first.charAt(0).toUpperCase() + data[i].name.first.slice(1) + " " + data[i].name.last.charAt(0).toUpperCase() + data[i].name.last.slice(1)
+            searchObj[data[i].searchName] = null  // can set to img link if we add profile images   'https://placehold.it/250x250'
+
+        }
+        console.log(data)
+        console.log(searchObj)
+        // set full data set to staffList
+        this.setState({ staffList: data, staffAutoComplete: searchObj })
+
+    }
+
 
     //initialise tabs and correct bugs assc with it
     initTabs() {
@@ -87,6 +121,8 @@ class Floorplan extends Component {
         tabContent[0].style.height = "1400px"
         //tabContent[0].style.height = window.innerHeight + "px"
     }
+
+    
 
     // this function will be sent to FPHeader so it can call and update this component on shift view change
     switchView() {
@@ -108,6 +144,8 @@ class Floorplan extends Component {
         //this.forceUpdate();
         //this.initTabs()
     }
+
+
 
     render() {
         console.log(this.state.sortedStaff)
@@ -142,6 +180,8 @@ class Floorplan extends Component {
                                 viewID={keyName + "-floor"}
                                 floor={switchArr[keyIndex]}
                                 shift={this.state.shift}
+                                staffList= {this.state.staffList}
+                                staffAutoComplete= {this.state.staffAutoComplete}
                             />
                         )
                     )

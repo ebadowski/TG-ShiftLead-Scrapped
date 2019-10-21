@@ -9,14 +9,15 @@ import './style.css';
 
 class Collapsible extends Component {
     constructor(props) {
-        console.log(props)
         super(props);
         this.state = {
             sortedStaffAM: props.sortedStaffAM,
             sortedStaffPM: props.sortedStaffPM,
             viewID: props.viewID,
             floor: props.floor,
-            shift: props.shift
+            shift: props.shift,
+            staffList: props.staffList,
+            staffAutoComplete: props.staffAutoComplete,
         };
     }
 
@@ -26,7 +27,9 @@ class Collapsible extends Component {
             sortedStaffPM: nextProps.sortedStaffPM,
             viewID: nextProps.viewID,
             floor: nextProps.floor,
-            shift: nextProps.shift
+            shift: nextProps.shift,
+            staffList: nextProps.staffList,
+            staffAutoComplete: nextProps.staffAutoComplete
         });
     }
 
@@ -62,20 +65,25 @@ class Collapsible extends Component {
 
                         </ul>
                     </div>
-                    <div id={this.state.floor + '-AM'} class="col s12">
+                    <div id={this.state.floor + '-AM'} className="col s12">
                         <ul className="collapsible popout">
                             <CollapseHeader
                                 sortedStaff={this.state.sortedStaffAM}
                                 sessionToken={this.props.sessionToken}
                                 floor={this.state.floor}
                                 shift={'am'}
+                                staffList={this.props.staffList}
+                                staffAutoComplete= {this.props.staffAutoComplete}
                             />
 
-                            <AddSection />
+                            <AddSection 
+                            staffList={this.props.staffList}
+                            staffAutoComplete= {this.props.staffAutoComplete}
+                            />
 
                         </ul>
                     </div>
-                    <div id={this.state.floor + '-PM'} class="col s12">
+                    <div id={this.state.floor + '-PM'} className="col s12">
                         <ul className="collapsible popout">
 
                             <CollapseHeader
@@ -83,9 +91,14 @@ class Collapsible extends Component {
                                 sessionToken={this.props.sessionToken}
                                 floor={this.state.floor}
                                 shift={'pm'}
+                                staffList={this.props.staffList}
+                                staffAutoComplete= {this.props.staffAutoComplete}
                             />
 
-                            <AddSection />
+                            <AddSection 
+                               staffList={this.props.staffList}
+                               staffAutoComplete= {this.props.staffAutoComplete}
+                            />
 
                         </ul>
                     </div>

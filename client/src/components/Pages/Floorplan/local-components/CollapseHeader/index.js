@@ -75,6 +75,10 @@ class CollapsibleHeader extends Component {
                         <CollapseBody
                             sessionToken={this.props.sessionToken}
                             staff={staff}
+                            shift={this.state.shift}
+                            floor={this.state.floor}
+                            staffList={this.props.staffList}
+                            staffAutoComplete= {this.props.staffAutoComplete}
                             updateOnChange={() =>
                                 this.updateOnChange()
                             }
