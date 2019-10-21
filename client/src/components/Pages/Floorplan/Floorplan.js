@@ -19,7 +19,11 @@ import testBays3pm from './testers/pm/testBays3'
 
 import './style.css';
 
+let switchArr = ["1", "2", "3", "MB", "TR", "LL"]
+
 class Floorplan extends Component {
+
+
     constructor(props) {
         super(props);
 
@@ -46,11 +50,13 @@ class Floorplan extends Component {
                     // LL: "testBaysLL"
                 }
             },
-            view: {
-                floor: "2",
-                shift: "am"
-            }
+            floor: "1",
+            shift: false
+
         };
+
+        // Bind the this context to the handler function
+        this.switchView = this.switchView.bind(this);
     }
 
     componentDidMount() {
@@ -58,8 +64,18 @@ class Floorplan extends Component {
         console.log(this.state.sortedStaff.am.first)
         M.AutoInit();
 
+        this.initTabs()
+
+    }
+    componentDidUpdate() {
+        M.AutoInit();
+        this.initTabs()
+    }
+
+    //initialise tabs and correct bugs assc with it
+    initTabs() {
         //Set Tabs to swipeable (mobile responsive)
-        let el = document.querySelectorAll('.tabs');
+        let el = document.querySelectorAll('.parent-tabs');
         let options = {
             swipeable: true
         }
@@ -68,42 +84,70 @@ class Floorplan extends Component {
         // Fix Tab content height to fit contents
         console.log(document.querySelectorAll('.tabs-content'))
         let tabContent = document.querySelectorAll('.tabs-content')
-        tabContent[0].style.height = "1000px"
+        tabContent[0].style.height = "1400px"
         //tabContent[0].style.height = window.innerHeight + "px"
-
     }
-    componentDidUpdate() {
-        M.AutoInit();
 
+    // this function will be sent to FPHeader so it can call and update this component on shift view change
+    switchView() {
+        // let newState = this.state.view
+        // newState[target] = value;
+
+        //this.setState({ [target]: value })
+        this.setState({ shift: !this.state.shift })
+        //this.forceUpdate();
+        //this.initTabs()
+    }
+
+    switchFloor(value) {
+        // let newState = this.state.view
+        // newState[target] = value;
+
+        //this.setState({ [target]: value })
+        this.setState({ floor: value })
+        //this.forceUpdate();
+        //this.initTabs()
     }
 
     render() {
-        console.log(this.state.sortedStaff.am.first)
+        console.log(this.state.sortedStaff)
         return (
             <div>
-                <FPHeader />
+                <FPHeader
+                    //switchView={this.switchView}
+                    // switchView={(target, value) => this.switchView(target, value)}
+                    shift={this.state.shift}
+                />
 
-                <ul id="tabs-swipe" className="tabs">
+                <ul id="tabs-swipe" className="tabs parent-tabs">
                     {Object.keys(this.state.sortedStaff.am).map(
                         (keyName, keyIndex) => (
                             <li className="tab col s3" key={'tab-' + keyIndex}>
-                                <a href={"#" + keyName + "-floor"}>
+                                <a
+                                    href={"#" + keyName + "-floor"}
+                                //onClick={() => this.switchFloor(switchArr[keyIndex])}
+                                >
                                     {keyName}
                                 </a>
                             </li>
                         )
                     )}
                 </ul>
-                {Object.keys(this.state.sortedStaff.am).map(
-                    (keyName, keyIndex) => (
-                        < Collapsible
-                            sortedStaff={this.state.sortedStaff.am[keyName]}
-                            viewID={keyName + "-floor"}
-                        />
+                {
+                    Object.keys(this.state.sortedStaff.am).map(
+                        (keyName, keyIndex) => (
+                            < Collapsible
+                                sortedStaffAM={this.state.sortedStaff.am[keyName]}
+                                sortedStaffPM={this.state.sortedStaff.pm[keyName]}
+                                viewID={keyName + "-floor"}
+                                floor={switchArr[keyIndex]}
+                                shift={this.state.shift}
+                            />
+                        )
                     )
-                )}
+                }
 
-            </div>
+            </div >
         );
     }
 }
