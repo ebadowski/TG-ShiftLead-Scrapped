@@ -129,13 +129,13 @@ class EditCO extends Component {
                             <i className="material-icons prefix">account_circle</i>
                             <input
                                 type="text"
-                                id="autocomplete-input-name"
+                                id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '+'))}
                                 className="autocomplete staffNameEdit"
                                 name="nameVal"
                                 value={this.state.nameVal}
                                 onChange={this.handleInputChange}
                                 onClick={this.handleInputChange} />
-                            <label htmlFor="autocomplete-input-name">Staff Name</label>
+                            <label htmlFor={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}>Staff Name</label>
                         </div>
                     </div>
 
@@ -144,25 +144,25 @@ class EditCO extends Component {
                             Bays: {'  '}
                             <div className="input-field inline">
                                 <input
-                                    id="baystart"
+                                    id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
                                     type="number"
                                     className="validate"
                                     name="startVal"
                                     value={this.state.startVal}
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor="baystart">Start</label>
+                                <label htmlFor={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}>Start</label>
                             </div>
                             <div className="input-field inline">
                                 <input
-                                    id="bayend"
+                                    id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
                                     type="number"
                                     className="validate"
                                     name="endVal"
                                     value={this.state.endVal}
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor="bayend">End</label>
+                                <label htmlFor={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}>End</label>
                             </div>
                         </div>
                     </div>
@@ -171,17 +171,17 @@ class EditCO extends Component {
                         <div className="input-field col s8">
                             <i className="material-icons prefix">local_drink</i>
                             <input
-                                id="bevInput"
+                                id={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
                                 type="text"
                                 className="validate"
                                 name="bevVal"
                                 value={this.state.bevVal}
                                 onChange={this.handleInputChange}
                             />
-                            <label htmlFor="bevInput">Bev Task</label>
-                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target='dropdown1'>assignment</i>
+                            <label htmlFor={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Bev Task</label>
+                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
                         </div>
-                        <ul id='dropdown1' className='dropdown-content '>
+                        <ul id={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content '>
                             {
                                 bevTasks.map(
                                     (task) => (
@@ -196,17 +196,17 @@ class EditCO extends Component {
                         <div className="input-field col s8">
                             <i className="material-icons prefix">golf_course</i>
                             <input
-                                id="tlInput"
+                                id={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
                                 type="text"
                                 className="validate"
                                 name="tlVal"
                                 value={this.state.tlVal}
                                 onChange={this.handleInputChange}
                             />
-                            <label htmlFor="tlInput">Tee Line Task</label>
-                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target='dropdown2'>assignment</i>
+                            <label htmlFor={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Tee Line Task</label>
+                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
                         </div>
-                        <ul id='dropdown2' className='dropdown-content'>
+                        <ul id={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content'>
                             {
                                 tlTasks.map(
                                     (task) => (
@@ -230,8 +230,8 @@ class EditCO extends Component {
                     </div>
 
                     <div className="row center">
-                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Add Section
-                                    <i className="material-icons right">person_add</i>
+                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
+                                    <i className="material-icons right">update</i>
                         </button>
                     </div>
 

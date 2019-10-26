@@ -73,12 +73,14 @@ class Collapsible extends Component {
                                 floor={this.state.floor}
                                 shift={'am'}
                                 staffList={this.props.staffList}
-                                staffAutoComplete= {this.props.staffAutoComplete}
+                                staffAutoComplete={this.props.staffAutoComplete}
                             />
 
-                            <AddSection 
-                            staffList={this.props.staffList}
-                            staffAutoComplete= {this.props.staffAutoComplete}
+                            <AddSection
+                                staffList={this.props.staffList}
+                                staffAutoComplete={this.props.staffAutoComplete}
+                                floor={this.state.floor}
+                                shift={'am'}
                             />
 
                         </ul>
@@ -92,12 +94,14 @@ class Collapsible extends Component {
                                 floor={this.state.floor}
                                 shift={'pm'}
                                 staffList={this.props.staffList}
-                                staffAutoComplete= {this.props.staffAutoComplete}
+                                staffAutoComplete={this.props.staffAutoComplete}
                             />
 
-                            <AddSection 
-                               staffList={this.props.staffList}
-                               staffAutoComplete= {this.props.staffAutoComplete}
+                            <AddSection
+                                staffList={this.props.staffList}
+                                staffAutoComplete={this.props.staffAutoComplete}
+                                floor={this.state.floor}
+                                shift={'pm'}
                             />
 
                         </ul>

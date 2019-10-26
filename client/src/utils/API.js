@@ -14,6 +14,8 @@ export default {
 
 
     // CHECKOUT
+   
+
     createNewCheckout: (session, body) => {
         return axios.post('/api/checkout', body)
     }

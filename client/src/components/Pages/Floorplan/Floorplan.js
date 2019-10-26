@@ -63,7 +63,7 @@ class Floorplan extends Component {
 
     componentDidMount() {
         // this.getItems();
-        console.log(this.state.sortedStaff.am.first)
+        // console.log(this.state.sortedStaff.am.first)
         M.AutoInit();
 
         this.initTabs()
@@ -80,7 +80,7 @@ class Floorplan extends Component {
         // API.getAllStaff(this.props.sessionToken)
         API.getAllStaff("session token goes here")
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.sortStaffData(response.data)
             })
             .catch(function (error) {
@@ -98,8 +98,8 @@ class Floorplan extends Component {
             searchObj[data[i].searchName] = null  // can set to img link if we add profile images   'https://placehold.it/250x250'
 
         }
-        console.log(data)
-        console.log(searchObj)
+        // console.log(data)
+        // console.log(searchObj)
         // set full data set to staffList
         this.setState({ staffList: data, staffAutoComplete: searchObj })
 
@@ -116,7 +116,7 @@ class Floorplan extends Component {
         var instance = M.Tabs.init(el, options);
 
         // Fix Tab content height to fit contents
-        console.log(document.querySelectorAll('.tabs-content'))
+         //console.log(document.querySelectorAll('.tabs-content'))
         let tabContent = document.querySelectorAll('.tabs-content')
         tabContent[0].style.height = "1400px"
         //tabContent[0].style.height = window.innerHeight + "px"
@@ -148,7 +148,7 @@ class Floorplan extends Component {
 
 
     render() {
-        console.log(this.state.sortedStaff)
+        // console.log(this.state.sortedStaff)
         return (
             <div>
                 <FPHeader

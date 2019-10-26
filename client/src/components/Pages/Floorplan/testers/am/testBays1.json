@@ -17,7 +17,7 @@
             "folds": 15
         },
         "slCheckout": {
-            "BVsidework": false,
+            "BVsidework": true,
             "TLsidework": false,
             "rolls": false,
             "folds": false
@@ -48,8 +48,8 @@
         },
         "slCheckout": {
             "BVsidework": false,
-            "TLsidework": false,
-            "rolls": false,
+            "TLsidework": true,
+            "rolls": true,
             "folds": false
         },
         "adminCheckout": false,
@@ -77,10 +77,10 @@
             "folds": 15
         },
         "slCheckout": {
-            "BVsidework": false,
-            "TLsidework": false,
+            "BVsidework": true,
+            "TLsidework": true,
             "rolls": false,
-            "folds": false
+            "folds": true
         },
         "adminCheckout": false,
         "modCheckout": false,
@@ -107,10 +107,10 @@
             "folds": 15
         },
         "slCheckout": {
-            "BVsidework": false,
-            "TLsidework": false,
-            "rolls": false,
-            "folds": false
+            "BVsidework": true,
+            "TLsidework": true,
+            "rolls": true,
+            "folds": true
         },
         "adminCheckout": false,
         "modCheckout": false,
@@ -137,10 +137,10 @@
             "folds": 15
         },
         "slCheckout": {
-            "BVsidework": false,
-            "TLsidework": false,
-            "rolls": false,
-            "folds": false
+            "BVsidework": true,
+            "TLsidework": true,
+            "rolls": true,
+            "folds": true
         },
         "adminCheckout": false,
         "modCheckout": false,
@@ -169,7 +169,7 @@
         "slCheckout": {
             "BVsidework": false,
             "TLsidework": false,
-            "rolls": false,
+            "rolls": true,
             "folds": false
         },
         "adminCheckout": false,
@@ -198,7 +198,7 @@
         },
         "slCheckout": {
             "BVsidework": false,
-            "TLsidework": false,
+            "TLsidework": true,
             "rolls": false,
             "folds": false
         },

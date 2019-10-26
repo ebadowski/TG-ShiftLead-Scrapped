@@ -16,8 +16,8 @@ class AddSection extends Component {
         this.state = {
             staffList: props.staffList,
             staffAutoComplete: props.staffAutoComplete,
-            shift: "am", // CHANGE TO PROPS FROM VIEW
-            floor: "2", // CHANGE TO PROPS FROM VIEW
+            shift: props.shift, 
+            floor: props.floor, 
             rolls: null, // CHANGE TO PROPS FROM VIEW
             folds: null, // CHANGE TO PROPS FROM VIEW
             nameVal: '',
@@ -40,10 +40,12 @@ class AddSection extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+       //  console.log(nextProps)
         this.setState({
             staffList: nextProps.staffList,
-            staffAutoComplete: nextProps.staffAutoComplete
+            staffAutoComplete: nextProps.staffAutoComplete,
+            shift: nextProps.shift, 
+            floor: nextProps.floor
         });
        // this.initAutoComplete()
     }
@@ -80,7 +82,7 @@ class AddSection extends Component {
             let staffObj = this.state.staffList.filter(obj => {
                 return obj.searchName === this.state.nameVal
             })
-            console.log(staffObj[0]._id)
+            // console.log(staffObj[0]._id)
             let newCO = {
                 staffID: staffObj[0]._id,
                 shiftLead: this.state.slVal,
@@ -134,13 +136,13 @@ class AddSection extends Component {
                                     <i className="material-icons prefix">account_circle</i>
                                     <input
                                         type="text"
-                                        id="autocomplete-input-name"
+                                        id={"autocomplete-input-name-" + this.state.floor + '-'+ this.state.shift}
                                         className="autocomplete staffNameInput"
                                         name="nameVal"
                                         value={this.state.nameVal}
                                         onChange={this.handleInputChange}
                                         onClick={this.handleInputChange} />
-                                    <label htmlFor="autocomplete-input-name">Staff Name</label>
+                                    <label htmlFor={"autocomplete-input-name-" + this.state.floor + '-'+ this.state.shift}>Staff Name</label>
                                 </div>
                             </div>
 
@@ -149,25 +151,25 @@ class AddSection extends Component {
                                     Bays: {'  '}
                                     <div className="input-field inline">
                                         <input
-                                            id="baystart"
+                                            id={"baystart-" + this.state.floor + '-'+ this.state.shift}
                                             type="number"
                                             className="validate"
                                             name="startVal"
                                             value={this.state.startVal}
                                             onChange={this.handleInputChange}
                                         />
-                                        <label htmlFor="baystart">Start</label>
+                                        <label htmlFor={"baystart-" + this.state.floor + '-'+ this.state.shift}>Start</label>
                                     </div>
                                     <div className="input-field inline">
                                         <input
-                                            id="bayend"
+                                            id={"bayend-" + this.state.floor + '-'+ this.state.shift}
                                             type="number"
                                             className="validate"
                                             name="endVal"
                                             value={this.state.endVal}
                                             onChange={this.handleInputChange}
                                         />
-                                        <label htmlFor="bayend">End</label>
+                                        <label htmlFor={"bayend-" + this.state.floor + '-'+ this.state.shift}>End</label>
                                     </div>
                                 </div>
                             </div>
@@ -176,17 +178,17 @@ class AddSection extends Component {
                                 <div className="input-field col s8">
                                     <i className="material-icons prefix">local_drink</i>
                                     <input
-                                        id="bevInput"
+                                        id={"bevInput-" + this.state.floor + '-'+ this.state.shift}
                                         type="text"
                                         className="validate"
                                         name="bevVal"
                                         value={this.state.bevVal}
                                         onChange={this.handleInputChange}
                                     />
-                                    <label htmlFor="bevInput">Bev Task</label>
-                                    <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target='dropdown1'>assignment</i>
+                                    <label htmlFor={"bevInput-" + this.state.floor + '-'+ this.state.shift}>Bev Task</label>
+                                    <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"bevDropDown-" + this.state.floor + '-'+ this.state.shift}>assignment</i>
                                 </div>
-                                <ul id='dropdown1' className='dropdown-content '>
+                                <ul id={"bevDropDown-" + this.state.floor + '-'+ this.state.shift} className='dropdown-content '>
                                     {
                                         bevTasks.map(
                                             (task) => (
@@ -201,17 +203,17 @@ class AddSection extends Component {
                                 <div className="input-field col s8">
                                     <i className="material-icons prefix">golf_course</i>
                                     <input
-                                        id="tlInput"
+                                        id={"tlInput-" + this.state.floor + '-'+ this.state.shift}
                                         type="text"
                                         className="validate"
                                         name="tlVal"
                                         value={this.state.tlVal}
                                         onChange={this.handleInputChange}
                                     />
-                                    <label htmlFor="tlInput">Tee Line Task</label>
-                                    <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target='dropdown2'>assignment</i>
+                                    <label htmlFor={"tlInput-" + this.state.floor + '-'+ this.state.shift}>Tee Line Task</label>
+                                    <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"teeDropDown-" + this.state.floor + '-'+ this.state.shift}>assignment</i>
                                 </div>
-                                <ul id='dropdown2' className='dropdown-content'>
+                                <ul id={"teeDropDown-" + this.state.floor + '-'+ this.state.shift} className='dropdown-content'>
                                     {
                                         tlTasks.map(
                                             (task) => (
