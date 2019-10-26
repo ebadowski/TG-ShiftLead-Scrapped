@@ -129,7 +129,7 @@ class EditCO extends Component {
                             <i className="material-icons prefix">account_circle</i>
                             <input
                                 type="text"
-                                id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '+'))}
+                                id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}
                                 className="autocomplete staffNameEdit"
                                 name="nameVal"
                                 value={this.state.nameVal}

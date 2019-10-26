@@ -9,6 +9,7 @@ const checkout = require('./checkout');
 const staff = require('./staff');
 const contest = require('./contested');
 const pins = require('./pins');
+const date = require('./date');
 
 
 // Require authentication routes
@@ -20,6 +21,7 @@ router.use('/api/checkout', checkout.controller);
 router.use('/api/staff', staff.controller);
 router.use('/api/contest', contest.controller);
 router.use('/api/pin', pins.controller);
+router.use('/api/date', date.controller);
 
 // Authentication routes
 router.use('/auth/login', auth.login);

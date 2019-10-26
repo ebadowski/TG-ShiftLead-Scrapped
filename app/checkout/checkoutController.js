@@ -65,9 +65,9 @@ router
             });
     });
 
-// Matches with /api/checkouts/:_id
+// Matches with /api/checkouts/find/:_id
 router
-    .route('/:_id')
+    .route('/find/:_id')
     // GET route for retrieving a checkout by id
     //.get(auth.authenticate, function (req, res) {
     .get(function (req, res) {
@@ -106,5 +106,22 @@ router
                 res.status(500).json(err);
             });
     });
+
+// Matches with /api/checkouts/date
+router
+    .route('/date')
+    // GET route for retrieving checkouts from today
+    //.get(auth.authenticate, function (req, res) {
+    .get(function (req, res) {
+        let query = { date: { $gte: req.headers['start'], $lt: req.headers['end'] } }
+        Checkout.find(query)
+            .then(function (checkout) {
+                res.status(200).json(checkout);
+            })
+            .catch(function (err) {
+                res.status(500).json(err);
+            });
+    });
+
 
 module.exports = router;
