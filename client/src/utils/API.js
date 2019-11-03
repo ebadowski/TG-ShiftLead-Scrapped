@@ -38,7 +38,11 @@ export default {
 
     createNewCheckout: (session, body) => {
         return axios.post('/api/checkout', body)
+    },
+    checkOff: (val, target, staffID) => {
+        return axios.put('/api/checkout/'+staffID, {target: target, val: val})
     }
+
 
 
 }

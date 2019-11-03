@@ -21,12 +21,12 @@ class EditCO extends Component {
             floor: props.floor, // CHANGE TO PROPS FROM VIEW
             rolls: props, // CHANGE TO PROPS FROM VIEW
             folds: null, // CHANGE TO PROPS FROM VIEW
-            nameVal: '',
-            startVal: '',
-            endVal: '',
-            bevVal: '',
-            tlVal: '',
-            slVal: false
+            nameVal: '' + props.staff.name,
+            startVal: '' + props.staff.bays.start,
+            endVal: '' + props.staff.bays.end,
+            bevVal: '' + props.staff.tasks.bev,
+            tlVal: '' + props.staff.tasks.teeline,
+            slVal: props.staff.shiftLead
         };
     }
 
@@ -112,135 +112,206 @@ class EditCO extends Component {
         // this.getUsers(this.state.searchFilter, this.state.value)
     }
 
+    checkOff(target) {
+        switch (target) {
+            case "bev":
+                console.log(this.state.staff)
+                API.checkOff(!this.slCheckout, target, this.state.staff.staffID)
+                break;
+            case "tee":
+                console.log(this.state.staff, target, this.state.staff.staffID)
+                break;
+            case "rolls":
+                console.log(this.state.staff, target, this.state.staff.staffID)
+                break;
+            case "folds":
+                console.log(this.state.staff, target, this.state.staff.staffID)
+                break;
+            default:
+            // code block
 
-
-    render() {
-        this.initAutoComplete()
-        return (
-
-            <div className="row">
-                <form
-                    className="col s12"
-                    onSubmit={this.handleFormSubmit}
-                    id="section-form"
-                >
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <i className="material-icons prefix">account_circle</i>
-                            <input
-                                type="text"
-                                id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                className="autocomplete staffNameEdit"
-                                name="nameVal"
-                                value={this.state.nameVal}
-                                onChange={this.handleInputChange}
-                                onClick={this.handleInputChange} />
-                            <label htmlFor={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}>Staff Name</label>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col s12">
-                            Bays: {'  '}
-                            <div className="input-field inline">
-                                <input
-                                    id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    type="number"
-                                    className="validate"
-                                    name="startVal"
-                                    value={this.state.startVal}
-                                    onChange={this.handleInputChange}
-                                />
-                                <label htmlFor={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}>Start</label>
-                            </div>
-                            <div className="input-field inline">
-                                <input
-                                    id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    type="number"
-                                    className="validate"
-                                    name="endVal"
-                                    value={this.state.endVal}
-                                    onChange={this.handleInputChange}
-                                />
-                                <label htmlFor={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}>End</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="input-field col s8">
-                            <i className="material-icons prefix">local_drink</i>
-                            <input
-                                id={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                type="text"
-                                className="validate"
-                                name="bevVal"
-                                value={this.state.bevVal}
-                                onChange={this.handleInputChange}
-                            />
-                            <label htmlFor={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Bev Task</label>
-                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
-                        </div>
-                        <ul id={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content '>
-                            {
-                                bevTasks.map(
-                                    (task) => (
-                                        <li><a href="#!" onClick={() => this.setState({ bevVal: task })}>{task}</a></li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </div>
-
-                    <div className="row">
-                        <div className="input-field col s8">
-                            <i className="material-icons prefix">golf_course</i>
-                            <input
-                                id={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                type="text"
-                                className="validate"
-                                name="tlVal"
-                                value={this.state.tlVal}
-                                onChange={this.handleInputChange}
-                            />
-                            <label htmlFor={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Tee Line Task</label>
-                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
-                        </div>
-                        <ul id={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content'>
-                            {
-                                tlTasks.map(
-                                    (task) => (
-                                        <li><a href="#!" onClick={() => this.setState({ tlVal: task })}>{task}</a></li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </div>
-
-                    <div className="row">
-                        <div className="col s12">
-                            <p>
-                                <label>
-                                    <input type="checkbox" name="slVal"
-                                        onClick={this.handleSwitchChange} />
-                                    <span>Shiftlead</span>
-                                </label>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="row center">
-                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
-                                    <i className="material-icons right">update</i>
-                        </button>
-                    </div>
-
-                </form>
-
-            </div>
-
-        );
+        }
     }
-}
 
-export default EditCO;
+
+        render() {
+            this.initAutoComplete()
+            return (
+
+                <div className="row">
+                    <form>
+                        <div className="row">
+                            <div className="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="slVal"
+                                            onClick={() => this.checkOff('bev')} />
+                                        <span>Bev Task</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div className="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="slVal"
+                                            onClick={() => this.checkOff('tee')} />
+                                        <span>Tee Task</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="slVal"
+                                            onClick={() => this.checkOff('rolls')} />
+                                        <span>Rolls</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div className="col s6">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="slVal"
+                                            onClick={() => this.checkOff('folds')} />
+                                        <span>Folds</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                    <div className='divider' />
+                    <br />
+
+
+
+                    <form
+                        className="col s12"
+                        onSubmit={this.handleFormSubmit}
+                        id="section-form"
+                    >
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <i className="material-icons prefix">account_circle</i>
+                                <input
+                                    type="text"
+                                    id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                    className="autocomplete staffNameEdit"
+                                    name="nameVal"
+                                    value={this.state.nameVal}
+                                    onChange={this.handleInputChange}
+                                    onClick={this.handleInputChange} />
+                                <label htmlFor={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}>Staff Name</label>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col s12">
+                                Bays: {'  '}
+                                <div className="input-field inline">
+                                    <input
+                                        id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                        type="number"
+                                        className="validate"
+                                        name="startVal"
+                                        value={this.state.startVal}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <label htmlFor={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}>Start</label>
+                                </div>
+                                <div className="input-field inline">
+                                    <input
+                                        id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                        type="number"
+                                        className="validate"
+                                        name="endVal"
+                                        value={this.state.endVal}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <label htmlFor={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}>End</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <i className="material-icons prefix">local_drink</i>
+                                <input
+                                    id={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                    type="text"
+                                    className="validate"
+                                    name="bevVal"
+                                    value={this.state.bevVal}
+                                    onChange={this.handleInputChange}
+                                />
+                                <label htmlFor={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Bev Task</label>
+                                <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
+                            </div>
+                            <ul id={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content '>
+                                {
+                                    bevTasks.map(
+                                        (task) => (
+                                            <li><a href="#!" onClick={() => this.setState({ bevVal: task })}>{task}</a></li>
+                                        )
+                                    )
+                                }
+                            </ul>
+                        </div>
+
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <i className="material-icons prefix">golf_course</i>
+                                <input
+                                    id={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                    type="text"
+                                    className="validate"
+                                    name="tlVal"
+                                    value={this.state.tlVal}
+                                    onChange={this.handleInputChange}
+                                />
+                                <label htmlFor={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Tee Line Task</label>
+                                <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
+                            </div>
+                            <ul id={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content'>
+                                {
+                                    tlTasks.map(
+                                        (task) => (
+                                            <li><a href="#!" onClick={() => this.setState({ tlVal: task })}>{task}</a></li>
+                                        )
+                                    )
+                                }
+                            </ul>
+                        </div>
+
+                        <div className="row">
+                            <div className="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="slVal"
+                                            onClick={this.handleSwitchChange} />
+                                        <span>Shiftlead</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="row center">
+                            <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
+                                    <i className="material-icons right">update</i>
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            );
+        }
+    }
+
+    export default EditCO;
