@@ -17,7 +17,8 @@ class CollapseBody extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            staff: nextProps.staff
+            staff: nextProps.staff,
+            NOTSECURE: nextProps.SLCode
         });
     }
 

@@ -22,6 +22,7 @@ export default {
         });
     },
     getCOFromDate: (session, date) => {
+        console.log(date)
         // start today
         var start = moment(date).startOf('day');
         // end today

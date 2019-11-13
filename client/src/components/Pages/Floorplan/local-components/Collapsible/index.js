@@ -65,6 +65,7 @@ class Collapsible extends Component {
                 console.log(response);
                 //this.setState({ SLCode: response.data.role })
                 this.setState({ SLCode: true })
+                //this.forceUpdate()
             })
             .catch(function (error) {
                 console.log(error);
@@ -75,6 +76,7 @@ class Collapsible extends Component {
                 console.log(response);
                 //this.setState({ SLCode: response.data.role })
                 this.setState({ SLCode: true })
+                //this.forceUpdate()
             })
             .catch(function (error) {
                 console.log(error);
