@@ -152,7 +152,8 @@ class AddSection extends Component {
                                     <div className="input-field inline">
                                         <input
                                             id={"baystart-" + this.state.floor + '-' + this.state.shift}
-                                            type="number"
+                                            type="number" pattern="[0-9]*" 
+                                            inputMode="numeric" 
                                             className="validate"
                                             name="startVal"
                                             value={this.state.startVal}
@@ -163,7 +164,8 @@ class AddSection extends Component {
                                     <div className="input-field inline">
                                         <input
                                             id={"bayend-" + this.state.floor + '-' + this.state.shift}
-                                            type="number"
+                                            type="number" pattern="[0-9]*" 
+                                            inputMode="numeric" 
                                             className="validate"
                                             name="endVal"
                                             value={this.state.endVal}

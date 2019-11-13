@@ -51,19 +51,19 @@ class CollapsibleHeader extends Component {
             (this.state.sortedStaff).map(
                 (staff, i) => (
                     <li
-                        key={staff.name + '-li'}
+                        key={(staff.name.replace(/ /g, '-')) + '-li'}
 
                     >
                         <div className="collapsible-header">
 
-                            <div className="col s4 left">{staff.bays.start}-{staff.bays.end} </div>
+                            <div className="col s2 center-align">{staff.bays.start}-{staff.bays.end} </div>
                             <div
-                                className={"col s4 " + (staff.shiftLead ?"green-text" :"black-text")}
+                                className={"col s4" + (staff.shiftLead ? "green-text" : "black-text")}
                             >
-                                {staff.name}
+                                {staff.name }
                             </div>
 
-                            <div className="col s4 right-align">
+                            <div className="col s6 right-align">
                                 {/* FIGURE OUT CONTAINER SO THAT ONE ICON DOESN'T DROP BY ITSELF ON WIDTH SHRINK */}
                                 <i className="material-icons "> <span className={staff.slCheckout.BVsidework ? "green-text text-darken-1" : "red-text text-darken-1"}>local_drink</span></i>
                                 <i className="material-icons "> <span className={staff.slCheckout.TLsidework ? "green-text text-darken-1" : "red-text text-darken-1"}>golf_course</span></i>
@@ -78,10 +78,12 @@ class CollapsibleHeader extends Component {
                             shift={this.state.shift}
                             floor={this.state.floor}
                             staffList={this.props.staffList}
-                            staffAutoComplete= {this.props.staffAutoComplete}
+                            staffAutoComplete={this.props.staffAutoComplete}
                             updateOnChange={() =>
                                 this.updateOnChange()
                             }
+                            shiftLeadLogin={pin => this.props.shiftLeadLogin(pin)}
+                            SLCode={this.props.SLCode}
                         />
                     </li>
                 )

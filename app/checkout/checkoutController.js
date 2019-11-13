@@ -30,7 +30,7 @@ router
         const query = utils.format.query(req.query);
 
         Checkout.find(query)
-            //.populate({ path: 'staffID', options: { sort: { _id: -1 } } })
+            .populate({ path: 'staffID', options: { sort: { _id: -1 } } })
             .sort({ _id: -1 })
             .then(function (checkout) {
                 res.status(200).json(checkout);
@@ -115,6 +115,7 @@ router
     .get(function (req, res) {
         let query = { date: { $gte: req.headers['start'], $lt: req.headers['end'] } }
         Checkout.find(query)
+        .populate( 'staffID', 'name checkouts' )
             .then(function (checkout) {
                 res.status(200).json(checkout);
             })
@@ -122,6 +123,22 @@ router
                 res.status(500).json(err);
             });
     });
+
+    // Matches with /api/checkouts/date
+router
+.route('/updatetest')
+// GET route for retrieving checkouts from today
+//.get(auth.authenticate, function (req, res) {
+.get(function (req, res) {
+    let query = { date: { $gte: req.headers['start'], $lt: req.headers['end'] } }
+    Checkout.updateMany(query,  {"$set":{date: req.headers['today']}})
+        .then(function (checkout) {
+            res.status(200).json(checkout);
+        })
+        .catch(function (err) {
+            res.status(500).json(err);
+        });
+});
 
 
 module.exports = router;

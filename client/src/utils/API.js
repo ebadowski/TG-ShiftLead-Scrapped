@@ -35,12 +35,35 @@ export default {
             }
         });
     },
+    updateTestSet: (session, date) => {
+        // start today
+        var start = moment(date).startOf('day');
+        // end today
+        var end = moment(date).endOf('day');
+        // today
+        var today = moment()
+
+        return axios.get('/api/checkout/updatetest', {
+            headers: {
+                //'x-session-token': session
+                'start': start.toString(),
+                'end': end.toString(),
+                'today': today.toString()
+            }
+        });
+    },
 
     createNewCheckout: (session, body) => {
         return axios.post('/api/checkout', body)
     },
     checkOff: (val, target, staffID) => {
-        return axios.put('/api/checkout/'+staffID, {target: target, val: val})
+        return axios.put('/api/checkout/' + staffID, { target: target, val: val })
+    },
+
+
+    // LOGIN
+    checkPin: (pin, role, session) => {
+        return axios.post('/api/pin/login', { role: role, pin: pin })
     }
 
 

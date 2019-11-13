@@ -134,184 +134,186 @@ class EditCO extends Component {
     }
 
 
-        render() {
-            this.initAutoComplete()
-            return (
+    render() {
+        this.initAutoComplete()
+        return (
 
-                <div className="row">
-                    <form>
-                        <div className="row">
-                            <div className="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="slVal"
-                                            onClick={() => this.checkOff('bev')} />
-                                        <span>Bev Task</span>
-                                    </label>
-                                </p>
-                            </div>
-                            <div className="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="slVal"
-                                            onClick={() => this.checkOff('tee')} />
-                                        <span>Tee Task</span>
-                                    </label>
-                                </p>
-                            </div>
+            <div className="row">
+                <form>
+                    <div className="row">
+                        <div className="col s6 center" >
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="slVal"
+                                        onClick={() => this.checkOff('bev')} />
+                                    <span>Bev Task</span>
+                                </label>
+                            </p>
                         </div>
-                        <div className="row">
-                            <div className="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="slVal"
-                                            onClick={() => this.checkOff('rolls')} />
-                                        <span>Rolls</span>
-                                    </label>
-                                </p>
-                            </div>
-                            <div className="col s6">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="slVal"
-                                            onClick={() => this.checkOff('folds')} />
-                                        <span>Folds</span>
-                                    </label>
-                                </p>
-                            </div>
+                        <div className="col s6 center">
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="slVal"
+                                        onClick={() => this.checkOff('tee')} />
+                                    <span>Tee Task</span>
+                                </label>
+                            </p>
                         </div>
+                    </div>
+                    <div className="row">
+                        <div className="col s6 center">
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="slVal"
+                                        onClick={() => this.checkOff('rolls')} />
+                                    <span>Rolls</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div className="col s6 center">
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="slVal"
+                                        onClick={() => this.checkOff('folds')} />
+                                    <span>Folds</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
 
-                    </form>
+                </form>
 
 
 
-                    <div className='divider' />
-                    <br />
+                <div className='divider' />
+                <br />
 
 
 
-                    <form
-                        className="col s12"
-                        onSubmit={this.handleFormSubmit}
-                        id="section-form"
-                    >
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <i className="material-icons prefix">account_circle</i>
+                <form
+                    className="col s12"
+                    onSubmit={this.handleFormSubmit}
+                    id="section-form"
+                >
+                    <div className="row">
+                        <div className="input-field col s6">
+                            <i className="material-icons prefix">account_circle</i>
+                            <input
+                                type="text"
+                                id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                className="autocomplete staffNameEdit"
+                                name="nameVal"
+                                value={this.state.nameVal}
+                                onChange={this.handleInputChange}
+                                onClick={this.handleInputChange} />
+                            <label htmlFor={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}>Staff Name</label>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col s12">
+                            Bays: {'  '}
+                            <div className="input-field inline">
                                 <input
-                                    type="text"
-                                    id={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    className="autocomplete staffNameEdit"
-                                    name="nameVal"
-                                    value={this.state.nameVal}
-                                    onChange={this.handleInputChange}
-                                    onClick={this.handleInputChange} />
-                                <label htmlFor={"autocomplete-input-name-" + (this.state.staff.name.replace(/ /g, '-'))}>Staff Name</label>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col s12">
-                                Bays: {'  '}
-                                <div className="input-field inline">
-                                    <input
-                                        id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                        type="number"
-                                        className="validate"
-                                        name="startVal"
-                                        value={this.state.startVal}
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <label htmlFor={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}>Start</label>
-                                </div>
-                                <div className="input-field inline">
-                                    <input
-                                        id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                        type="number"
-                                        className="validate"
-                                        name="endVal"
-                                        value={this.state.endVal}
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <label htmlFor={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}>End</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="input-field col s8">
-                                <i className="material-icons prefix">local_drink</i>
-                                <input
-                                    id={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    type="text"
+                                    id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                    inputMode="numeric" 
                                     className="validate"
-                                    name="bevVal"
-                                    value={this.state.bevVal}
+                                    type="number" pattern="[0-9]*" 
+                                    name="startVal"
+                                    value={this.state.startVal}
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Bev Task</label>
-                                <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
+                                <label htmlFor={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}>Start</label>
                             </div>
-                            <ul id={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content '>
-                                {
-                                    bevTasks.map(
-                                        (task) => (
-                                            <li><a href="#!" onClick={() => this.setState({ bevVal: task })}>{task}</a></li>
-                                        )
-                                    )
-                                }
-                            </ul>
-                        </div>
-
-                        <div className="row">
-                            <div className="input-field col s8">
-                                <i className="material-icons prefix">golf_course</i>
+                            <div className="input-field inline">
                                 <input
-                                    id={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    type="text"
+                                    id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                    inputMode="numeric" 
+                                    type="number" pattern="[0-9]*" 
                                     className="validate"
-                                    name="tlVal"
-                                    value={this.state.tlVal}
+                                    name="endVal"
+                                    value={this.state.endVal}
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Tee Line Task</label>
-                                <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
+                                <label htmlFor={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}>End</label>
                             </div>
-                            <ul id={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content'>
-                                {
-                                    tlTasks.map(
-                                        (task) => (
-                                            <li><a href="#!" onClick={() => this.setState({ tlVal: task })}>{task}</a></li>
-                                        )
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="input-field col s8">
+                            <i className="material-icons prefix">local_drink</i>
+                            <input
+                                id={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                type="text"
+                                className="validate"
+                                name="bevVal"
+                                value={this.state.bevVal}
+                                onChange={this.handleInputChange}
+                            />
+                            <label htmlFor={"bevTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Bev Task</label>
+                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
+                        </div>
+                        <ul id={"dropdownbev-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content '>
+                            {
+                                bevTasks.map(
+                                    (task) => (
+                                        <li><a href="#!" onClick={() => this.setState({ bevVal: task })}>{task}</a></li>
                                     )
-                                }
-                            </ul>
-                        </div>
+                                )
+                            }
+                        </ul>
+                    </div>
 
-                        <div className="row">
-                            <div className="col s12">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="slVal"
-                                            onClick={this.handleSwitchChange} />
-                                        <span>Shiftlead</span>
-                                    </label>
-                                </p>
-                            </div>
+                    <div className="row">
+                        <div className="input-field col s8">
+                            <i className="material-icons prefix">golf_course</i>
+                            <input
+                                id={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}
+                                type="text"
+                                className="validate"
+                                name="tlVal"
+                                value={this.state.tlVal}
+                                onChange={this.handleInputChange}
+                            />
+                            <label htmlFor={"teeTaskInput-" + (this.state.staff.name.replace(/ /g, '-'))}>Tee Line Task</label>
+                            <i className="material-icons dropdown-trigger prefix right light-blue-text" data-target={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))}>assignment</i>
                         </div>
+                        <ul id={"dropdowntee-" + (this.state.staff.name.replace(/ /g, '-'))} className='dropdown-content'>
+                            {
+                                tlTasks.map(
+                                    (task) => (
+                                        <li><a href="#!" onClick={() => this.setState({ tlVal: task })}>{task}</a></li>
+                                    )
+                                )
+                            }
+                        </ul>
+                    </div>
 
-                        <div className="row center">
-                            <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
+                    <div className="row">
+                        <div className="col s12">
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="slVal"
+                                        onClick={this.handleSwitchChange} />
+                                    <span>Shiftlead</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="row center">
+                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
                                     <i className="material-icons right">update</i>
-                            </button>
-                        </div>
+                        </button>
+                    </div>
 
-                    </form>
+                </form>
 
-                </div>
+            </div>
 
-            );
-        }
+        );
     }
+}
 
-    export default EditCO;
+export default EditCO;

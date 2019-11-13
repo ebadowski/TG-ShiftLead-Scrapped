@@ -9,13 +9,13 @@ const Schema = mongoose.Schema;
 // Define Checkout schema
 const checkoutSchema = new Schema(
     {
-        staffID: [
+        staffID: 
             {
                 ref: 'Staff',
                 type: Schema.Types.ObjectId,
                 index: true
             }
-        ],
+        ,
         shiftLead: {
             type: Boolean,
             required: true

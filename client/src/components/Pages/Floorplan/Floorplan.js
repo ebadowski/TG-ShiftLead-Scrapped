@@ -27,7 +27,6 @@ class Floorplan extends Component {
 
     constructor(props) {
         super(props);
-
         // Bind the this context to the handler function
         //this.updateOnNewItem = this.updateOnNewItem.bind(this);
 
@@ -35,42 +34,42 @@ class Floorplan extends Component {
         this.state = {
             staffList: {},
             staffAutoComplete: {},
-            sortedStaff: {
-                am: {
-                    first: testBays1am,
-                    second: testBays2am,
-                    third: testBays3am
-                    // MB: "testBaysMB",
-                    // TR: "testBaysTR",
-                    // LL: "testBaysLL"
-                },
-                pm: {
-                    first: testBays1pm,
-                    second: testBays2pm,
-                    third: testBays3pm
-                    // MB: "testBaysMB",
-                    // TR: "testBaysTR",
-                    // LL: "testBaysLL"
-                }
-            },
-            //  sortedStaff: {
+            // sortedStaff: {
             //     am: {
-            //         first: [],
-            //         second: [],
-            //         third: []
+            //         first: testBays1am,
+            //         second: testBays2am,
+            //         third: testBays3am
             //         // MB: "testBaysMB",
             //         // TR: "testBaysTR",
             //         // LL: "testBaysLL"
             //     },
             //     pm: {
-            //         first: [],
-            //         second: [],
-            //         third: []
+            //         first: testBays1pm,
+            //         second: testBays2pm,
+            //         third: testBays3pm
             //         // MB: "testBaysMB",
             //         // TR: "testBaysTR",
             //         // LL: "testBaysLL"
             //     }
             // },
+             sortedStaff: {
+                am: {
+                    first: [],
+                    second: [],
+                    third: []
+                    // MB: "testBaysMB",
+                    // TR: "testBaysTR",
+                    // LL: "testBaysLL"
+                },
+                pm: {
+                    first: [],
+                    second: [],
+                    third: []
+                    // MB: "testBaysMB",
+                    // TR: "testBaysTR",
+                    // LL: "testBaysLL"
+                }
+            },
             floor: "1",
             shift: false
 
@@ -81,13 +80,16 @@ class Floorplan extends Component {
     }
 
     componentDidMount() {
-       // this.getCOs();
+        this.getCOs();
         // console.log(this.state.sortedStaff.am.first)
         M.AutoInit();
 
         this.initTabs()
 
         this.getStaffNames();
+
+        // // UPDATES TEST SET, DELETE LATER
+         console.log(API.updateTestSet('session', moment('2019-11-13')))
 
     }
     componentDidUpdate() {
@@ -126,6 +128,9 @@ class Floorplan extends Component {
         }
         // sort each item into respective obj key
         for (let i in data) {
+            // Concats Name into a usable format for later use
+            data[i].name = data[i].staffID.name.first.charAt(0).toUpperCase() + data[i].staffID.name.first.slice(1) + " " + data[i].staffID.name.last.charAt(0).toUpperCase() + data[i].staffID.name.last.slice(1)
+            
             switch (data[i].shift) {
                 case "am":
                     switch (data[i].floor) {

@@ -88,6 +88,42 @@ router
             });
     })
 
+    
+// Matches with /api/checkouts/date
+router
+    .route('/login')
+    // POST route to log in a user
+    .post(function (req, res) {
+        console.log(req.body)
+        Pin.findOne({ role: req.body.role })
+            .then(function (pin) {
+                console.log(pin)
+                if (pin === null) {
+                    res.status(404).json({
+                        error: {
+                            code: 404,
+                            message: 'No such role: ' + req.body.role
+                        }
+                    });
+                } else {
+                    const attempt = hashPass(req.body.pin, pin.salt);
+                    if (attempt.hash === pin.pin) {
+                        res.status(200).json(pin);
+                    } else {
+                        res.status(401).json({
+                            error: {
+                                code: 401,
+                                message: 'Bad credentials'
+                            }
+                        });
+                    }
+                }
+            })
+            .catch(function (err) {
+                res.status(500).json(err);
+            });
+    });
+
 // // Matches with /api/users/:_id
 // router
 //     .route('/:_id')

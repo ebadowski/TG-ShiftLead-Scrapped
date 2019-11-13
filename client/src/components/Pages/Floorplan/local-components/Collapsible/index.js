@@ -6,6 +6,7 @@ import CollapseBody from '../CollapseBody';
 import AddSection from '../AddSection';
 
 import './style.css';
+import API from '../../../../../utils/API';
 
 class Collapsible extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Collapsible extends Component {
             shift: props.shift,
             staffList: props.staffList,
             staffAutoComplete: props.staffAutoComplete,
+            SLCode: false
         };
     }
 
@@ -52,6 +54,33 @@ class Collapsible extends Component {
         var instance = M.Tabs.init(el, options);
 
     }
+    //handle login from child components
+    shiftLeadLogin(pin) {
+        let bevAttempt = this.state.floor + "slb" + (this.state.shift ? 'p' : 'a')
+        let teeAttempt = this.state.floor + "slt" + (this.state.shift ? 'p' : 'a')
+        console.log(pin)
+        console.log(bevAttempt, teeAttempt)
+        API.checkPin(pin, bevAttempt)
+            .then(response => {
+                console.log(response);
+                //this.setState({ SLCode: response.data.role })
+                this.setState({ SLCode: true })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        API.checkPin(pin, teeAttempt)
+            .then(response => {
+                console.log(response);
+                //this.setState({ SLCode: response.data.role })
+                this.setState({ SLCode: true })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
 
     render() {
         return (
@@ -74,6 +103,8 @@ class Collapsible extends Component {
                                 shift={'am'}
                                 staffList={this.props.staffList}
                                 staffAutoComplete={this.props.staffAutoComplete}
+                                shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+                                SLCode={this.state.SLCode}
                             />
 
                             <AddSection
@@ -95,6 +126,8 @@ class Collapsible extends Component {
                                 shift={'pm'}
                                 staffList={this.props.staffList}
                                 staffAutoComplete={this.props.staffAutoComplete}
+                                shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+                                SLCode={this.state.SLCode}
                             />
 
                             <AddSection
