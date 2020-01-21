@@ -10,13 +10,13 @@ import Collapsible from './local-components/Collapsible';
 
 import API from '../../../utils/API';
 
-import testBays1am from './testers/am/testBays1'
-import testBays2am from './testers/am/testBays2'
-import testBays3am from './testers/am/testBays3'
+// import testBays1am from './testers/am/testBays1'
+// import testBays2am from './testers/am/testBays2'
+// import testBays3am from './testers/am/testBays3'
 
-import testBays1pm from './testers/pm/testBays1'
-import testBays2pm from './testers/pm/testBays2'
-import testBays3pm from './testers/pm/testBays3'
+// import testBays1pm from './testers/pm/testBays1'
+// import testBays2pm from './testers/pm/testBays2'
+// import testBays3pm from './testers/pm/testBays3'
 
 import './style.css';
 
@@ -89,8 +89,9 @@ class Floorplan extends Component {
         this.getStaffNames();
 
         // // UPDATES TEST SET, DELETE LATER
-         console.log(API.updateTestSet('session', moment('2019-11-13')))
-
+         //console.log(API.updateTestSet('session', moment('2019-11-13')))
+         // API.updateTestSet('session', moment('2020-01-21'))
+         API.updateTestSet('session', moment('2019-10-26'))
     }
     componentDidUpdate() {
         M.AutoInit();

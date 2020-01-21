@@ -7,10 +7,12 @@ import {
 } from 'react-router-dom';
 import { Header } from './components/common';
 import {
-    Floorplan
+    Floorplan,
+    NewUser
 } from './components/Pages';
 import API from './utils/API';
 
+let roles = ['1ab', '1at', '1pb', '1pt', '2ab', '2at', '2pb', '2pt', '3ab', '3at', '3pb', '3pt'];
 
 class App extends Component {
     state = {
@@ -20,7 +22,12 @@ class App extends Component {
         },
         init: true,
         path: '',
-        sessionToken: ''
+        sessionToken: '',
+        newUser: true,
+        userRole: '',
+        userShiftLead: false
+
+
     };
 
     componentDidMount() {
@@ -28,6 +35,8 @@ class App extends Component {
         const state = {};
         state.init = false; // Allow original path to be stored in state by avoiding redirect after initial render
         state.path = window.location.pathname;
+
+        this.checkUser();
 
         if (sessionToken) {
             // this.getSessionUser(sessionToken);
@@ -39,6 +48,32 @@ class App extends Component {
         this.setState(state);
     }
 
+    //checks if returning user, sets appropriate state accordingly
+    checkUser() {
+        let pin = sessionStorage.getItem("pin");
+        let role = sessionStorage.getItem("role");
+
+        if (pin && role) {
+            this.checkPin(pin, role)
+        }
+    }
+
+    //verifies pin for existing role
+    checkPin(pin, role) {
+        API.checkPin(pin, role)
+            .then(response => {
+                console.log(response);
+                this.setState({ newUser: false, userShiftLead: true, userRole: role })
+                sessionStorage.setItem("pin", pin);
+                sessionStorage.setItem("role", role);
+            })
+            .catch(function (error) {
+                console.log(error);
+                sessionStorage.clear()
+            });
+        console.log(pin)
+    }
+
 
     render() {
         return (
@@ -46,9 +81,22 @@ class App extends Component {
                 <Header
                     sessionToken={this.state.sessionToken}
                 />
-                <Floorplan
-                    sessionToken={this.state.sessionToken}
-                />
+
+
+                {
+                    this.state.newUser
+                        ? <NewUser
+                            checkPin={(pin, role) => this.checkPin(pin, role)}
+                        />
+                        : <Floorplan
+                            sessionToken={this.state.sessionToken}
+                            userRole={this.state.userRole}
+                            userShiftLead={this.state.userShiftLead}
+                            checkPin={(pin, role) => this.checkPin(pin, role)}
+                        />
+                }
+
+
             </div>
         )
     }

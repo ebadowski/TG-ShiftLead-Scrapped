@@ -67,9 +67,11 @@ class EditCO extends Component {
 
 
     handleInputChange = event => {
+        event.preventDefault();
         this.setState({ [event.target.name]: event.target.value });
     }
     handleSwitchChange = event => {
+        event.preventDefault();
         this.setState({ slVal: !this.state.slVal })
     }
 

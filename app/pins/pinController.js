@@ -107,6 +107,7 @@ router
                     });
                 } else {
                     const attempt = hashPass(req.body.pin, pin.salt);
+                    console.log( attempt.hash + '=========' + pin.pin)
                     if (attempt.hash === pin.pin) {
                         res.status(200).json(pin);
                     } else {

@@ -124,7 +124,7 @@ router
             });
     });
 
-    // Matches with /api/checkouts/date
+    // Matches with /api/checkout/updatetest
 router
 .route('/updatetest')
 // GET route for retrieving checkouts from today
