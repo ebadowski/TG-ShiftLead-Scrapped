@@ -58,7 +58,14 @@ export default {
         return axios.post('/api/checkout', body)
     },
     checkOff: (val, target, staffID) => {
-        return axios.put('/api/checkout/' + staffID, { target: target, val: val })
+        console.log(val, target, staffID)
+        return axios.get('/api/checkout/update/' + staffID, { 
+            headers:{
+                'target': target, 
+                'val': val 
+            }
+            
+        })
     },
 
 

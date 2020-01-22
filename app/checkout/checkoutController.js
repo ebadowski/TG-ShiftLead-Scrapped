@@ -65,6 +65,27 @@ router
             });
     });
 
+
+    // Matches with /api/checkouts/update/:_id
+router
+.route('/update/:_id')
+// PATCH route for updating a checkout by staff id
+// .patch(auth.authenticate, function (req, res) {
+.get(function (req, res) {
+    Checkout.findOneAndUpdate({ staffID: req.params._id },{"$set":{[req.headers['target']]: req.headers['val']}},  {
+        new: true
+    })
+        //.populate({ path: 'staff', options: { sort: { _id: -1 } } })
+        .then(function (checkout) {
+            res.status(200).json(checkout);
+
+        })
+        .catch(function (err) {
+            res.status(500).json(err);
+        });
+})
+
+
 // Matches with /api/checkouts/find/:_id
 router
     .route('/find/:_id')

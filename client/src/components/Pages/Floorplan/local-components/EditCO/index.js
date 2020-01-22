@@ -118,16 +118,19 @@ class EditCO extends Component {
         switch (target) {
             case "bev":
                 console.log(this.state.staff)
-                API.checkOff(!this.slCheckout, target, this.state.staff.staffID)
+                API.checkOff(!this.state.staff.slCheckout.BVsidework, "slCheckout.BVsidework", this.state.staff.staffID._id)
                 break;
             case "tee":
                 console.log(this.state.staff, target, this.state.staff.staffID)
+                API.checkOff(!this.state.staff.slCheckout.TLsidework, "slCheckout.TLsidework", this.state.staff.staffID._id)
                 break;
             case "rolls":
                 console.log(this.state.staff, target, this.state.staff.staffID)
+                API.checkOff(!this.state.staff.slCheckout.rolls, "slCheckout.rolls", this.state.staff.staffID._id)
                 break;
             case "folds":
                 console.log(this.state.staff, target, this.state.staff.staffID)
+                API.checkOff(!this.state.staff.slCheckout.folds, "slCheckout.folds", this.state.staff.staffID._id)
                 break;
             default:
             // code block
