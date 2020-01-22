@@ -107,6 +107,8 @@ class Collapsible extends Component {
                                 staffAutoComplete={this.props.staffAutoComplete}
                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
                                 SLCode={this.state.SLCode}
+                                userRole={this.props.userRole}
+                                userShiftLead={this.props.userShiftLead}
                             />
 
                             <AddSection
@@ -130,6 +132,8 @@ class Collapsible extends Component {
                                 staffAutoComplete={this.props.staffAutoComplete}
                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
                                 SLCode={this.state.SLCode}
+                                userRole={this.props.userRole}
+                                userShiftLead={this.props.userShiftLead}
                             />
 
                             <AddSection

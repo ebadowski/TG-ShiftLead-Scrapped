@@ -84,6 +84,8 @@ class CollapsibleHeader extends Component {
                             }
                             shiftLeadLogin={pin => this.props.shiftLeadLogin(pin)}
                             SLCode={this.props.SLCode}
+                            userRole={this.props.userRole}
+                                userShiftLead={this.props.userShiftLead}
                         />
                     </li>
                 )

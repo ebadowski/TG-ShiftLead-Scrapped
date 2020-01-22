@@ -343,6 +343,8 @@ class Floorplan extends Component {
                                 shift={this.state.shift}
                                 staffList={this.state.staffList}
                                 staffAutoComplete={this.state.staffAutoComplete}
+                                userRole={this.props.userRole}
+                            userShiftLead={this.props.userShiftLead}
                             />
                         )
                     )
