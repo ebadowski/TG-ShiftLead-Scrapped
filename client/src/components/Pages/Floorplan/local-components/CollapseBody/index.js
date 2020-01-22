@@ -32,6 +32,10 @@ class CollapseBody extends Component {
                         staff={this.state.staff}
                         staffList={this.props.staffList}
                         staffAutoComplete={this.props.staffAutoComplete}
+                        shift={this.props.shift}
+                            floor={this.props.floor}
+                            rolls={this.props.rolls}
+                            folds={this.props.folds}
                     /> //AUTH LOGIN FOR THAT FLOOR if true go to EditCO
                     : <div className="row">
                         <ul className="collection">

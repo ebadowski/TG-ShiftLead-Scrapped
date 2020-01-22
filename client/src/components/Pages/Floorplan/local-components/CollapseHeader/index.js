@@ -77,6 +77,8 @@ class CollapsibleHeader extends Component {
                             staff={staff}
                             shift={this.state.shift}
                             floor={this.state.floor}
+                            rolls={this.props.rolls}
+                            folds={this.props.folds}
                             staffList={this.props.staffList}
                             staffAutoComplete={this.props.staffAutoComplete}
                             updateOnChange={() =>

@@ -57,6 +57,9 @@ export default {
     createNewCheckout: (session, body) => {
         return axios.post('/api/checkout', body)
     },
+    updateCheckout: (session, body, id) => {
+        return axios.patch('/api/checkout/find/' + id, body)
+    },
     checkOff: (val, target, staffID) => {
         console.log(val, target, staffID)
         return axios.get('/api/checkout/update/' + staffID, { 

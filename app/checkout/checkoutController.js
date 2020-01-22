@@ -114,6 +114,7 @@ router
             })
             .catch(function (err) {
                 res.status(500).json(err);
+                console.log(err)
             });
     })
     // DELETE route for deleting a checkout by id

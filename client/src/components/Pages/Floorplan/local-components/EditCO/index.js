@@ -19,8 +19,8 @@ class EditCO extends Component {
             staffAutoComplete: props.staffAutoComplete,
             shift: props.shift, // CHANGE TO PROPS FROM VIEW
             floor: props.floor, // CHANGE TO PROPS FROM VIEW
-            rolls: props, // CHANGE TO PROPS FROM VIEW
-            folds: null, // CHANGE TO PROPS FROM VIEW
+            rolls: props.rolls, // CHANGE TO PROPS FROM VIEW
+            folds: props.folds, // CHANGE TO PROPS FROM VIEW
             nameVal: '' + props.staff.name,
             startVal: '' + props.staff.bays.start,
             endVal: '' + props.staff.bays.end,
@@ -77,7 +77,7 @@ class EditCO extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        console.log(this.state.nameVal + ' ' + this.state.startVal + ' ' + this.state.endVal)
         if (this.state.nameVal && this.state.startVal && this.state.endVal) {
             //get staffID by name
             let staffObj = this.state.staffList.filter(obj => {
@@ -87,9 +87,9 @@ class EditCO extends Component {
             let newCO = {
                 staffID: staffObj[0]._id,
                 shiftLead: this.state.slVal,
-                date: moment(),
-                shift: this.state.shift,
-                floor: this.state.floor,
+                // date: moment(),
+                //shift: this.state.shift,
+                //floor: this.state.floor,
                 bays: {
                     start: this.state.startVal,
                     end: this.state.endVal
@@ -101,7 +101,7 @@ class EditCO extends Component {
                     folds: this.state.folds
                 }
             }
-            API.createNewCheckout('PUT SESSION HERE', newCO)
+            API.updateCheckout('PUT SESSION HERE', newCO, this.state.staff._id)
             //REFRESH PARENT ON SUCCESS 
         }
         else {
@@ -198,7 +198,7 @@ class EditCO extends Component {
                 <form
                     className="col s12"
                     onSubmit={this.handleFormSubmit}
-                    id="section-form"
+                    id="edit-form"
                 >
                     <div className="row">
                         <div className="input-field col s6">
@@ -221,9 +221,9 @@ class EditCO extends Component {
                             <div className="input-field inline">
                                 <input
                                     id={"baystart-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    inputMode="numeric" 
+                                    inputMode="numeric"
                                     className="validate"
-                                    type="number" pattern="[0-9]*" 
+                                    type="number" pattern="[0-9]*"
                                     name="startVal"
                                     value={this.state.startVal}
                                     onChange={this.handleInputChange}
@@ -233,8 +233,8 @@ class EditCO extends Component {
                             <div className="input-field inline">
                                 <input
                                     id={"bayend-" + (this.state.staff.name.replace(/ /g, '-'))}
-                                    inputMode="numeric" 
-                                    type="number" pattern="[0-9]*" 
+                                    inputMode="numeric"
+                                    type="number" pattern="[0-9]*"
                                     className="validate"
                                     name="endVal"
                                     value={this.state.endVal}
@@ -308,7 +308,7 @@ class EditCO extends Component {
                     </div>
 
                     <div className="row center">
-                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='section-form'>Update
+                        <button className="btn-large waves-effect waves-light blue lighten-2 center" type="submit" name="action" form='edit-form'>Update
                                     <i className="material-icons right">update</i>
                         </button>
                     </div>

@@ -19,7 +19,9 @@ class Collapsible extends Component {
             shift: props.shift,
             staffList: props.staffList,
             staffAutoComplete: props.staffAutoComplete,
-            SLCode: false
+            SLCode: false,
+            rolls:2, //'change me'
+            folds:3 //'change me too'
         };
     }
 
@@ -97,12 +99,15 @@ class Collapsible extends Component {
                         </ul>
                     </div>
                     <div id={this.state.floor + '-AM'} className="col s12">
+                        {/* ROLLS / FOLDS EDIT GOES HERE */}
                         <ul className="collapsible popout">
                             <CollapseHeader
                                 sortedStaff={this.state.sortedStaffAM}
                                 sessionToken={this.props.sessionToken}
                                 floor={this.state.floor}
                                 shift={'am'}
+                                rolls={this.state.rolls}
+                            folds={this.state.folds}
                                 staffList={this.props.staffList}
                                 staffAutoComplete={this.props.staffAutoComplete}
                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
@@ -121,6 +126,7 @@ class Collapsible extends Component {
                         </ul>
                     </div>
                     <div id={this.state.floor + '-PM'} className="col s12">
+                        {/* ROLLS / FOLDS EDIT GOES HERE */}
                         <ul className="collapsible popout">
 
                             <CollapseHeader
@@ -128,6 +134,8 @@ class Collapsible extends Component {
                                 sessionToken={this.props.sessionToken}
                                 floor={this.state.floor}
                                 shift={'pm'}
+                                rolls={this.state.rolls}
+                            folds={this.state.folds}
                                 staffList={this.props.staffList}
                                 staffAutoComplete={this.props.staffAutoComplete}
                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
