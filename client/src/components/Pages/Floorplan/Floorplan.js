@@ -91,8 +91,8 @@ class Floorplan extends Component {
 
         // // UPDATES TEST SET, DELETE LATER
         //console.log(API.updateTestSet('session', moment('2019-11-13')))
-        // API.updateTestSet('session', moment('2020-01-21'))
-        API.updateTestSet('session', moment('2019-10-26'))
+         API.updateTestSet('session', moment('2020-01-21'))
+       
     }
     componentDidUpdate() {
         M.AutoInit();
@@ -119,7 +119,6 @@ class Floorplan extends Component {
     }
 
     sortCOData(data) {
-        console.log(data)
         let sortedData = {
             am: {
                 first: [],
@@ -174,7 +173,6 @@ class Floorplan extends Component {
                 // code block
             }
         }
-        console.log(sortedData)
         let orderedData = {
             am: {
                 first: this.bubbleSort(sortedData.am.first),
@@ -189,12 +187,10 @@ class Floorplan extends Component {
 
             }
         }
-        console.log(orderedData)
         this.setState({ sortedStaff: orderedData })
 
     }
     bubbleSort(inputArr) {
-        console.log(inputArr)
         let len = inputArr.length;
         let swapped;
         do {
@@ -278,30 +274,25 @@ class Floorplan extends Component {
     //Uses key against role to determine if that tab should be active
     //BUGGED DEFAULTS TO THIRD ON REFRESH, something to do with materialize, this is assigning the correct class attr
     checkPath(key) {
-        console.log(key + ' ********* ' + this.state.userRole.charAt(0))
-        let block = <a href={"#" + key + "-floor"}>{key}</a>
+         let block = <a href={"#" + key + "-floor"}>{key}</a>
         switch (key) {
             case "first":
                 if (this.state.userRole.charAt(0) === "1") {
-                    console.log(true)
                     block = <a href={"#" + key + "-floor"} className="active">{key}</a>
                 }
                 break;
             case "second":
                 if (this.state.userRole.charAt(0) === "2") {
-                    console.log(true)
                     block = <a href={"#" + key + "-floor"} className="active">{key}</a>
                 }
                 break;
             case "third":
                 if (this.state.userRole.charAt(0) === "3") {
-                    console.log(true)
                     block = <a href={"#" + key + "-floor"} className="active">{key}</a>
                 }
                 break;
 
         }
-        console.log(block)
         return block
     }
 

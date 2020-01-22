@@ -77,13 +77,11 @@ class EditCO extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.nameVal + ' ' + this.state.startVal + ' ' + this.state.endVal)
         if (this.state.nameVal && this.state.startVal && this.state.endVal) {
             //get staffID by name
             let staffObj = this.state.staffList.filter(obj => {
                 return obj.searchName === this.state.nameVal
             })
-            console.log(staffObj[0]._id)
             let newCO = {
                 staffID: staffObj[0]._id,
                 shiftLead: this.state.slVal,
@@ -117,19 +115,15 @@ class EditCO extends Component {
     checkOff(target) {
         switch (target) {
             case "bev":
-                console.log(this.state.staff)
                 API.checkOff(!this.state.staff.slCheckout.BVsidework, "slCheckout.BVsidework", this.state.staff.staffID._id)
                 break;
             case "tee":
-                console.log(this.state.staff, target, this.state.staff.staffID)
                 API.checkOff(!this.state.staff.slCheckout.TLsidework, "slCheckout.TLsidework", this.state.staff.staffID._id)
                 break;
             case "rolls":
-                console.log(this.state.staff, target, this.state.staff.staffID)
                 API.checkOff(!this.state.staff.slCheckout.rolls, "slCheckout.rolls", this.state.staff.staffID._id)
                 break;
             case "folds":
-                console.log(this.state.staff, target, this.state.staff.staffID)
                 API.checkOff(!this.state.staff.slCheckout.folds, "slCheckout.folds", this.state.staff.staffID._id)
                 break;
             default:

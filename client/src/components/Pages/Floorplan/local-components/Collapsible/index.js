@@ -60,11 +60,8 @@ class Collapsible extends Component {
     shiftLeadLogin(pin) {
         let bevAttempt = this.state.floor + "slb" + (this.state.shift ? 'p' : 'a')
         let teeAttempt = this.state.floor + "slt" + (this.state.shift ? 'p' : 'a')
-        console.log(pin)
-        console.log(bevAttempt, teeAttempt)
         API.checkPin(pin, bevAttempt)
             .then(response => {
-                console.log(response);
                 //this.setState({ SLCode: response.data.role })
                 this.setState({ SLCode: true })
                 //this.forceUpdate()
@@ -75,7 +72,6 @@ class Collapsible extends Component {
 
         API.checkPin(pin, teeAttempt)
             .then(response => {
-                console.log(response);
                 //this.setState({ SLCode: response.data.role })
                 this.setState({ SLCode: true })
                 //this.forceUpdate()

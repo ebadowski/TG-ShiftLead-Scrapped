@@ -22,7 +22,6 @@ export default {
         });
     },
     getCOFromDate: (session, date) => {
-        console.log(date)
         // start today
         var start = moment(date).startOf('day');
         // end today
@@ -61,7 +60,6 @@ export default {
         return axios.patch('/api/checkout/find/' + id, body)
     },
     checkOff: (val, target, staffID) => {
-        console.log(val, target, staffID)
         return axios.get('/api/checkout/update/' + staffID, { 
             headers:{
                 'target': target, 

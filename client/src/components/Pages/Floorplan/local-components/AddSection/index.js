@@ -109,7 +109,6 @@ class AddSection extends Component {
                 classes: 'red'
             });
         }
-        console.log('submit clicked')
         // this.getUsers(this.state.searchFilter, this.state.value)
     }
 

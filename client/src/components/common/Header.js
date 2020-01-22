@@ -10,7 +10,6 @@ const imageFix = {
 };
 
 function Header(props) {
-    console.log(props)
     return (
         <nav>
             <div className="nav-wrapper">
