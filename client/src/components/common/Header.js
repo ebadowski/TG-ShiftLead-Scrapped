@@ -17,6 +17,17 @@ function Header(props) {
                 {/* <ul id="nav-mobile" className="left">
                 <HdrSLLogin/>
                 </ul> */}
+                <ul id="nav-mobile" className="left">
+                    <li>
+                        <a
+                            href="#"
+                            onClick= {() => sessionStorage.clear()}
+                            >
+                        <i class="material-icons">exit_to_app</i>
+                        </a>
+                    </li>
+                </ul>
+
 
                 <a href="#" className="brand-logo center"><img src={logo} alt="Logo" className="brand-logo center" style={imageFix} /></a>
 
@@ -31,7 +42,7 @@ function Header(props) {
                     <li><a href="#">ADMN</a></li>
                 </ul>
             </div>
-            
+
         </nav>
     );
 }
