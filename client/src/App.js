@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import M from 'materialize-css';
 import {
     BrowserRouter as Router,
     Route,
@@ -31,6 +32,7 @@ class App extends Component {
     };
 
     componentDidMount() {
+        M.AutoInit();
         const sessionToken = localStorage.getItem('sessionid');
         const state = {};
         state.init = false; // Allow original path to be stored in state by avoiding redirect after initial render
@@ -69,10 +71,33 @@ class App extends Component {
             })
             .catch(function (error) {
                 console.log(error);
-                sessionStorage.clear()
+                sessionStorage.removeItem('pin');
+                M.toast({html:'Invalid Pin'})
             });
         console.log(pin)
     }
+
+    userSubmit(shift, floor, pin, role){
+        console.log(shift, floor, pin, role)
+        if(shift && floor){
+            sessionStorage.setItem("role", floor+shift);
+            if(pin && role){
+                sessionStorage.setItem("role", floor+shift+role);
+               this.checkPin(pin, floor+shift+role) 
+            }
+            else if (pin || role){
+                M.toast({html:'Enter Pin and Role'})
+            }
+            else{
+                this.setState({ newUser: false})
+            }
+        }
+        else {
+            M.toast({html:'Select Floor and Shift'})
+        }
+    }
+
+
 
 
     render() {
@@ -86,7 +111,7 @@ class App extends Component {
                 {
                     this.state.newUser
                         ? <NewUser
-                            checkPin={(pin, role) => this.checkPin(pin, role)}
+                        userSubmit={(shift, floor, pin, role) => this.userSubmit(shift, floor, pin, role)}
                         />
                         : <Floorplan
                             sessionToken={this.state.sessionToken}
