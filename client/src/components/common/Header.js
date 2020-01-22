@@ -23,7 +23,7 @@ function Header(props) {
                             href="#"
                             onClick= {() => sessionStorage.clear()}
                             >
-                        <i class="material-icons">exit_to_app</i>
+                        <i className="material-icons">exit_to_app</i>
                         </a>
                     </li>
                 </ul>

@@ -58,6 +58,9 @@ class App extends Component {
         if (pin && role) {
             this.checkPin(pin, role)
         }
+        else if (role){
+            this.setState({ newUser: false, userRole: role})
+        }
     }
 
     //verifies pin for existing role
@@ -89,7 +92,7 @@ class App extends Component {
                 M.toast({html:'Enter Pin and Role'})
             }
             else{
-                this.setState({ newUser: false})
+                this.setState({ newUser: false, userRole: floor+shift})
             }
         }
         else {

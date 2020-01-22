@@ -52,7 +52,7 @@ class Floorplan extends Component {
             //         // LL: "testBaysLL"
             //     }
             // },
-             sortedStaff: {
+            sortedStaff: {
                 am: {
                     first: [],
                     second: [],
@@ -71,7 +71,8 @@ class Floorplan extends Component {
                 }
             },
             floor: "1",
-            shift: false
+            shift: false,
+            userRole: props.userRole
 
         };
 
@@ -89,13 +90,19 @@ class Floorplan extends Component {
         this.getStaffNames();
 
         // // UPDATES TEST SET, DELETE LATER
-         //console.log(API.updateTestSet('session', moment('2019-11-13')))
-         // API.updateTestSet('session', moment('2020-01-21'))
-         API.updateTestSet('session', moment('2019-10-26'))
+        //console.log(API.updateTestSet('session', moment('2019-11-13')))
+        // API.updateTestSet('session', moment('2020-01-21'))
+        API.updateTestSet('session', moment('2019-10-26'))
     }
     componentDidUpdate() {
         M.AutoInit();
         this.initTabs()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            userRole: nextProps.userRole
+        });
     }
 
     //get Checkouts for today
@@ -118,20 +125,20 @@ class Floorplan extends Component {
                 first: [],
                 second: [],
                 third: []
-               
+
             },
             pm: {
                 first: [],
                 second: [],
                 third: []
-               
+
             }
         }
         // sort each item into respective obj key
         for (let i in data) {
             // Concats Name into a usable format for later use
             data[i].name = data[i].staffID.name.first.charAt(0).toUpperCase() + data[i].staffID.name.first.slice(1) + " " + data[i].staffID.name.last.charAt(0).toUpperCase() + data[i].staffID.name.last.slice(1)
-            
+
             switch (data[i].shift) {
                 case "am":
                     switch (data[i].floor) {
@@ -173,17 +180,17 @@ class Floorplan extends Component {
                 first: this.bubbleSort(sortedData.am.first),
                 second: this.bubbleSort(sortedData.am.second),
                 third: this.bubbleSort(sortedData.am.third)
-                
+
             },
             pm: {
                 first: this.bubbleSort(sortedData.pm.first),
                 second: this.bubbleSort(sortedData.pm.second),
                 third: this.bubbleSort(sortedData.pm.third),
-               
+
             }
         }
         console.log(orderedData)
-        this.setState({sortedStaff: orderedData})
+        this.setState({ sortedStaff: orderedData })
 
     }
     bubbleSort(inputArr) {
@@ -193,7 +200,7 @@ class Floorplan extends Component {
         do {
             swapped = false;
             for (let i = 0; i < len; i++) {
-                    if ( i < len-1 && inputArr[i].bays.start > inputArr[i + 1].bays.start) {
+                if (i < len - 1 && inputArr[i].bays.start > inputArr[i + 1].bays.start) {
                     let tmp = inputArr[i];
                     inputArr[i] = inputArr[i + 1];
                     inputArr[i + 1] = tmp;
@@ -268,6 +275,35 @@ class Floorplan extends Component {
         //this.initTabs()
     }
 
+    //Uses key against role to determine if that tab should be active
+    //BUGGED DEFAULTS TO THIRD ON REFRESH, something to do with materialize, this is assigning the correct class attr
+    checkPath(key) {
+        console.log(key + ' ********* ' + this.state.userRole.charAt(0))
+        let block = <a href={"#" + key + "-floor"}>{key}</a>
+        switch (key) {
+            case "first":
+                if (this.state.userRole.charAt(0) === "1") {
+                    console.log(true)
+                    block = <a href={"#" + key + "-floor"} className="active">{key}</a>
+                }
+                break;
+            case "second":
+                if (this.state.userRole.charAt(0) === "2") {
+                    console.log(true)
+                    block = <a href={"#" + key + "-floor"} className="active">{key}</a>
+                }
+                break;
+            case "third":
+                if (this.state.userRole.charAt(0) === "3") {
+                    console.log(true)
+                    block = <a href={"#" + key + "-floor"} className="active">{key}</a>
+                }
+                break;
+
+        }
+        console.log(block)
+        return block
+    }
 
 
     render() {
@@ -284,12 +320,14 @@ class Floorplan extends Component {
                     {Object.keys(this.state.sortedStaff.am).map(
                         (keyName, keyIndex) => (
                             <li className="tab col s3" key={'tab-' + keyIndex}>
-                                <a
+                                {this.checkPath(keyName)}
+                                {/* <a
                                     href={"#" + keyName + "-floor"}
+                                    className={this.checkPath(keyName) ? "active" : null}
                                 //onClick={() => this.switchFloor(switchArr[keyIndex])}
-                                >
-                                    {keyName}
-                                </a>
+                                > 
+                                {keyName}
+                                </a>*/}
                             </li>
                         )
                     )}
