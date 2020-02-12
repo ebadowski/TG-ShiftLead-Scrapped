@@ -77,6 +77,7 @@ class EditCO extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log(this.state.staff)
         if (this.state.nameVal && this.state.startVal && this.state.endVal) {
             //get staffID by name
             let staffObj = this.state.staffList.filter(obj => {
@@ -100,7 +101,15 @@ class EditCO extends Component {
                 }
             }
             API.updateCheckout('PUT SESSION HERE', newCO, this.state.staff._id)
+            .then(res => {
+                console.log(res)
+                console.log(this.state.staff)
+               this.props.refreshOnUpdate(res.data)
+            }
+               
+            );
             //REFRESH PARENT ON SUCCESS 
+            //this.props.refreshOnUpdate();
         }
         else {
             M.toast({

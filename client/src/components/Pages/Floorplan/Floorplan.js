@@ -91,7 +91,7 @@ class Floorplan extends Component {
 
         // // UPDATES TEST SET, DELETE LATER
         //console.log(API.updateTestSet('session', moment('2019-11-13')))
-         API.updateTestSet('session', moment('2020-01-21'))
+        // API.updateTestSet('session', moment('2020-02-11'))
        
     }
     componentDidUpdate() {

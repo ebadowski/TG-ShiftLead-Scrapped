@@ -21,6 +21,16 @@ export default {
             // }
         });
     },
+    getOneCO: (session, coid) => { //coid is checkout id
+        return axios.get('/api/checkout/find/' + coid, {
+            // headers: {
+            //     'x-session-token': session
+            // }
+        })
+        .then(res => {
+            return res.data;
+        });
+    },
     getCOFromDate: (session, date) => {
         // start today
         var start = moment(date).startOf('day');

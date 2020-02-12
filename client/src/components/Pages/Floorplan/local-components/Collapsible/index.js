@@ -20,8 +20,8 @@ class Collapsible extends Component {
             staffList: props.staffList,
             staffAutoComplete: props.staffAutoComplete,
             SLCode: false,
-            rolls:2, //'change me'
-            folds:3 //'change me too'
+            rolls: 2, //'change me'
+            folds: 3 //'change me too'
         };
     }
 
@@ -81,7 +81,6 @@ class Collapsible extends Component {
             });
 
     }
-
     render() {
         return (
             <div id={this.state.viewID} className='tab-div'>
@@ -97,27 +96,35 @@ class Collapsible extends Component {
                     <div id={this.state.floor + '-AM'} className="col s12">
                         {/* ROLLS / FOLDS EDIT GOES HERE */}
                         <ul className="collapsible popout">
-                            <CollapseHeader
-                                sortedStaff={this.state.sortedStaffAM}
-                                sessionToken={this.props.sessionToken}
-                                floor={this.state.floor}
-                                shift={'am'}
-                                rolls={this.state.rolls}
-                            folds={this.state.folds}
-                                staffList={this.props.staffList}
-                                staffAutoComplete={this.props.staffAutoComplete}
-                                shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
-                                SLCode={this.state.SLCode}
-                                userRole={this.props.userRole}
-                                userShiftLead={this.props.userShiftLead}
-                            />
-
-                            <AddSection
-                                staffList={this.props.staffList}
-                                staffAutoComplete={this.props.staffAutoComplete}
-                                floor={this.state.floor}
-                                shift={'am'}
-                            />
+                            {(this.state.sortedStaffAM).map(
+                                (staff, i) => (
+                                    <CollapseHeader
+                                        
+                                        sessionToken={this.props.sessionToken}
+                                        staff={staff}
+                                        index= {i}
+                                        floor={this.state.floor}
+                                        shift={'am'}
+                                        rolls={this.state.rolls}
+                                        folds={this.state.folds}
+                                        staffList={this.props.staffList}
+                                        staffAutoComplete={this.props.staffAutoComplete}
+                                        shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+                                        SLCode={this.state.SLCode}
+                                        userRole={this.props.userRole}
+                                        userShiftLead={this.props.userShiftLead}
+                                    />
+                                )
+                            )}
+                            {(this.props.userShiftLead && this.props.floor === this.props.userRole.charAt(0))
+                                ? <AddSection
+                                    staffList={this.props.staffList}
+                                    staffAutoComplete={this.props.staffAutoComplete}
+                                    floor={this.state.floor}
+                                    shift={'am'}
+                                />
+                                : null
+                            }
 
                         </ul>
                     </div>
@@ -125,28 +132,34 @@ class Collapsible extends Component {
                         {/* ROLLS / FOLDS EDIT GOES HERE */}
                         <ul className="collapsible popout">
 
-                            <CollapseHeader
-                                sortedStaff={this.state.sortedStaffPM}
-                                sessionToken={this.props.sessionToken}
-                                floor={this.state.floor}
-                                shift={'pm'}
-                                rolls={this.state.rolls}
-                            folds={this.state.folds}
-                                staffList={this.props.staffList}
-                                staffAutoComplete={this.props.staffAutoComplete}
-                                shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
-                                SLCode={this.state.SLCode}
-                                userRole={this.props.userRole}
-                                userShiftLead={this.props.userShiftLead}
-                            />
-
-                            <AddSection
-                                staffList={this.props.staffList}
-                                staffAutoComplete={this.props.staffAutoComplete}
-                                floor={this.state.floor}
-                                shift={'pm'}
-                            />
-
+                        {(this.state.sortedStaffPM).map(
+                                (staffPM, i) => (
+                                    <CollapseHeader
+                                        
+                                        sessionToken={this.props.sessionToken}
+                                        staff={staffPM}
+                                        floor={this.state.floor}
+                                        shift={'pm'}
+                                        rolls={this.state.rolls}
+                                        folds={this.state.folds}
+                                        staffList={this.props.staffList}
+                                        staffAutoComplete={this.props.staffAutoComplete}
+                                        shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+                                        SLCode={this.state.SLCode}
+                                        userRole={this.props.userRole}
+                                        userShiftLead={this.props.userShiftLead}
+                                    />
+                                )
+                            )}
+                            {(this.props.userShiftLead && this.props.floor === this.props.userRole.charAt(0))
+                                ? <AddSection
+                                    staffList={this.props.staffList}
+                                    staffAutoComplete={this.props.staffAutoComplete}
+                                    floor={this.state.floor}
+                                    shift={'pm'}
+                                />
+                                : null
+                            }
                         </ul>
                     </div>
 
@@ -156,6 +169,85 @@ class Collapsible extends Component {
 
         );
     }
+
+    //     render() {
+    //         return (
+    //             <div id={this.state.viewID} className='tab-div'>
+
+    //                 <div className="row">
+    //                     <div className="col s12">
+    //                         <ul className="tabs nested-tabs" >
+    //                             <li className="tab col s3"><a href={"#" + this.state.floor + '-AM'}>AM</a></li>
+    //                             <li className="tab col s3"><a href={"#" + this.state.floor + '-PM'}>PM</a></li>
+
+    //                         </ul>
+    //                     </div>
+    //                     <div id={this.state.floor + '-AM'} className="col s12">
+    //                         {/* ROLLS / FOLDS EDIT GOES HERE */}
+    //                         <ul className="collapsible popout">
+    //                             <CollapseHeader
+    //                                 sortedStaff={this.state.sortedStaffAM}
+    //                                 sessionToken={this.props.sessionToken}
+    //                                 floor={this.state.floor}
+    //                                 shift={'am'}
+    //                                 rolls={this.state.rolls}
+    //                                 folds={this.state.folds}
+    //                                 staffList={this.props.staffList}
+    //                                 staffAutoComplete={this.props.staffAutoComplete}
+    //                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+    //                                 SLCode={this.state.SLCode}
+    //                                 userRole={this.props.userRole}
+    //                                 userShiftLead={this.props.userShiftLead}
+    //                             />
+
+    // {(this.props.userShiftLead && this.props.floor === this.props.userRole.charAt(0))
+    //                                 ? <AddSection
+    //                                     staffList={this.props.staffList}
+    //                                     staffAutoComplete={this.props.staffAutoComplete}
+    //                                     floor={this.state.floor}
+    //                                     shift={'am'}
+    //                                 />
+    //                                 :null
+    //                             }
+
+    //                         </ul>
+    //                     </div>
+    //                     <div id={this.state.floor + '-PM'} className="col s12">
+    //                         {/* ROLLS / FOLDS EDIT GOES HERE */}
+    //                         <ul className="collapsible popout">
+
+    //                             <CollapseHeader
+    //                                 sortedStaff={this.state.sortedStaffPM}
+    //                                 sessionToken={this.props.sessionToken}
+    //                                 floor={this.state.floor}
+    //                                 shift={'pm'}
+    //                                 rolls={this.state.rolls}
+    //                                 folds={this.state.folds}
+    //                                 staffList={this.props.staffList}
+    //                                 staffAutoComplete={this.props.staffAutoComplete}
+    //                                 shiftLeadLogin={pin => this.shiftLeadLogin(pin)}
+    //                                 SLCode={this.state.SLCode}
+    //                                 userRole={this.props.userRole}
+    //                                 userShiftLead={this.props.userShiftLead}
+    //                             />
+    //                             {(this.props.userShiftLead && this.props.floor === this.props.userRole.charAt(0))
+    //                                 ? <AddSection
+    //                                     staffList={this.props.staffList}
+    //                                     staffAutoComplete={this.props.staffAutoComplete}
+    //                                     floor={this.state.floor}
+    //                                     shift={'pm'}
+    //                                 />
+    //                                 :null
+    //                             }
+    //                         </ul>
+    //                     </div>
+
+    //                 </div>
+
+    //             </div>
+
+    //         );
+    //     }
 }
 
 export default Collapsible;

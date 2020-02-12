@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import EditCO from '../EditCO'
 import SLLogin from '../SLLogin'
 
+import API from '../../../../../utils/API';
+
 import './style.css';
 
 class CollapseBody extends Component {
@@ -22,6 +24,13 @@ class CollapseBody extends Component {
         });
     }
 
+    // refreshOnUpdate(updatedCO) {
+    //     console.log(updatedCO)
+    //     let newCO = this.state.staff;
+    //     newCO.slCheckout = updatedCO.slCheckout;
+    //     //newCO.comments = updatedCO.comments; // USE WHEN COMMENTS ARE IMPLEMENTED
+    //     this.setState({staff: newCO})
+    // }
 
 
     render() {
@@ -33,9 +42,10 @@ class CollapseBody extends Component {
                         staffList={this.props.staffList}
                         staffAutoComplete={this.props.staffAutoComplete}
                         shift={this.props.shift}
-                            floor={this.props.floor}
-                            rolls={this.props.rolls}
-                            folds={this.props.folds}
+                        floor={this.props.floor}
+                        rolls={this.props.rolls}
+                        folds={this.props.folds}
+                        refreshOnUpdate= {(updatedCO) => this.props.refreshOnUpdate(updatedCO)}
                     /> //AUTH LOGIN FOR THAT FLOOR if true go to EditCO
                     : <div className="row">
                         <ul className="collection">
@@ -44,7 +54,7 @@ class CollapseBody extends Component {
                                 <span className="title"> Bev Side Work</span>
                                 <p>{this.state.staff.tasks.bev}</p>
                             </li>
-                            <br/>
+                            <br />
                             <li className="collection-item avatar">
                                 <i className="material-icons circle">golf_course</i>
                                 <span className="title"> Tee Line Side Work</span>

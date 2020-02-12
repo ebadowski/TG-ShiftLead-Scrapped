@@ -93,7 +93,7 @@ router
     //.get(auth.authenticate, function (req, res) {
     .get(function (req, res) {
         Checkout.findById(req.params._id)
-            //.populate({ path: 'staff', options: { sort: { _id: -1 } } })
+        .populate({ path: 'staffID', options: { sort: { _id: -1 } }  })
             .then(function (checkout) {
                 res.status(200).json(checkout);
             })
@@ -107,10 +107,10 @@ router
         Checkout.findOneAndUpdate({ _id: req.params._id }, req.body, {
             new: true
         })
-            //.populate({ path: 'staff', options: { sort: { _id: -1 } } })
+           //.populate({ path: 'staff', options: { sort: { _id: -1 } } })
             .then(function (checkout) {
                 res.status(200).json(checkout);
-
+                console.log(checkout)
             })
             .catch(function (err) {
                 res.status(500).json(err);
