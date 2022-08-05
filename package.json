@@ -9,7 +9,7 @@
         "express": "^4.17.1",
         "hashpass": "0.0.0",
         "if-env": "^1.0.4",
-        "mongoose": "^5.7.0",
+        "mongoose": "^5.7.5",
         "node-sass": "^4.12.0",
         "nodemon": "^1.19.3",
         "react": "^16.9.0",
